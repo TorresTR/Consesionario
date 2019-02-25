@@ -50,6 +50,10 @@ public abstract class CarrosPrincipal {
         this.cilindraje = cilindraje;
     }
 
+    /**
+     * CarrosPrincipal es un contructor vacio que permite el manejo de los set de que estan en las diferentes
+     * clases
+     */
     public CarrosPrincipal() {
     }
 
