@@ -1,6 +1,6 @@
 package com.udec.consesionario;
 
-import java.util.ArrayList;
+
 
 /**
  * Esta es la clase padre que contiene todo lo que van a heredar las clases hijas
@@ -8,7 +8,7 @@ import java.util.ArrayList;
  */
 public abstract class CarrosPrincipal {
     
-    ArrayList listaVehiculos = new ArrayList<>();
+   
     /*
     la variable marca guardara la marca del vehiculo
     */
@@ -57,72 +57,82 @@ public abstract class CarrosPrincipal {
     public CarrosPrincipal() {
     }
 
-    /*
-    getMarca retorna la marca del vehiculo
-    */
+    /**
+     * retorna la marca del vehiculo
+     * @return marca
+     */
     public String getMarca() {
         return marca;
     }
 
-    /*
-    setMarca permite asignar la marca del vehiculo
-    */
+    /**
+     * setMarca permite asignar la marca del vehiculo
+     * @param marca 
+     */
     public void setMarca(String marca) {
         this.marca = marca;
     }
 
-    /*
-    getPrecio retorna el precio del vehiculo
-    */
+    /**
+     * getPrecio retorna el precio del vehiculo
+     * @return precio
+     */
     public int getPrecio() {
         return precio;
     }
 
-    /*
-    setPrecio permite asignar el  precio del vehiculo
-    */
+    /**
+     * setPrecio permite asignar el  precio del vehiculo
+     * @param precio 
+     */
     public void setPrecio(int precio) {
         this.precio = precio;
     }
 
-    /*
-    getColor retorna el color del vehiculo
-    */
+    /**
+     * getColor retorna el color del vehiculo
+     * @return color
+     */
     public String getColor() {
         return color;
     }
 
-    /*
-    setColor permite asignar el  color del vehiculo
-    */
+    /**
+     * setColor permite asignar el  color del vehiculo
+     * @param color 
+     */
     public void setColor(String color) {
         this.color = color;
     }
 
-    /*
-    getNumeroRuedas retorna el numero de ruedas  del vehiculo
-    */
+    /**
+     * getNumeroRuedas retorna el numero de ruedas  del vehiculo
+     * @return numeroRuedas
+     */
     public int getNumeroRuedas() {
         return numeroRuedas;
     }
 
-    /*
-    setNumeroRuedas permite asignar el  numero de ruedas del vehiculo
-    */
+    /**
+     * setNumeroRuedas permite asignar el  numero de ruedas del vehiculo
+     * @param numeroRuedas 
+     */
     public void setNumeroRuedas(int numeroRuedas) {
         this.numeroRuedas = numeroRuedas;
     }
 
-    /*
-    getCilindraje retorna el cilindraje del vehiculo
-    */
+    /**
+     * getCilindraje retorna el cilindraje del vehiculo
+     * @return cilindraje
+     */
     public int getCilindraje() {
         return cilindraje;
     }
 
-    /*
-    setCilindraje permite asignar el  cilindraje del vehiculo
-    */
+    /**
+     * setCilindraje permite asignar el  cilindraje del vehiculo
+     * @param cilindraje 
+     */
     public void setCilindraje(int cilindraje) {
         this.cilindraje = cilindraje;
     }

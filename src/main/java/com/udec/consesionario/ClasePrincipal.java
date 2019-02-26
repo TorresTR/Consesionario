@@ -1,15 +1,19 @@
 package com.udec.consesionario;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
  *
  * @author David
  */
+
 public class ClasePrincipal {
+     ArrayList listaVehiculos = new ArrayList<>();
         public static void main (String [ ] args) {          
             ClasePrincipal cs = new ClasePrincipal();
             cs.menu();
+             
     } //Cierre del main
         
     public  void menu(){
@@ -94,13 +98,13 @@ public class ClasePrincipal {
         System.out.print("Ingresa los caballos de fuerza del vehiculo: ");
         String caballosFuerza = scanner.nextLine();
         int cf=Integer.parseInt(caballosFuerza);
-        CarrosDeportivos cd;
-        cd= new CarrosDeportivos(marcaVehiculo,pv,colorVehiculo,nr,cv);
+        CarrosDeportivo cd;
+        cd= new CarrosDeportivo(marcaVehiculo,pv,colorVehiculo,nr,cv);
         cd.setAceleracion(av);
         cd.setAdherenciaAsfalto(aA);
         cd.setCaballosFuerza(cf);
         cd.setVelocidadMaxima(vm);
-        cd.listaVehiculos.add(cd);
+        listaVehiculos.add(cd);
         menuInsertar();
     }
     
@@ -134,7 +138,7 @@ public class ClasePrincipal {
         ce.setConsumoConbustible(cvc);
         ce.setErgonomia(ergonomia);
         ce.setNumeroPasajaeros(np);
-        ce.listaVehiculos.add(ce);
+        listaVehiculos.add(ce);
         menuInsertar();
     }
     
@@ -168,7 +172,7 @@ public class ClasePrincipal {
         cm.setPesoTon(pvton);
         cm.setHorugas(horu);
         cm.setTipoTrabajo(tipoTrabajo);
-        cm.listaVehiculos.add(cm);
+        listaVehiculos.add(cm);
         menuInsertar();
     }
     
@@ -197,12 +201,12 @@ public class ClasePrincipal {
         int  tr=Integer.parseInt(tamañoRuedas);
         System.out.print("Ingresa NO2 en el  vehiculo: ");
         String no2 = scanner.nextLine();
-        CarrosPersonalizados cp;
-        cp= new CarrosPersonalizados(marcaVehiculo,pv,colorVehiculo,nr,cv);
+        CarrosPersonalizado cp;
+        cp= new CarrosPersonalizado(marcaVehiculo,pv,colorVehiculo,nr,cv);
         cp.setAlerones(av);
         cp.setTamañoRuedas(tr);
         cp.setNo2(no2);
-        cp.listaVehiculos.add(cp);
+        listaVehiculos.add(cp);
         menuInsertar();
     }
     

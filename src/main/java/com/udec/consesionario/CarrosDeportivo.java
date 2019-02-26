@@ -4,7 +4,7 @@ package com.udec.consesionario;
  * Esta clase se capturan los datos de autos deportivos
  * @author David
  */
-public class CarrosDeportivos extends CarrosPrincipal{
+public class CarrosDeportivo extends CarrosPrincipal{
 
     /*
     aceleracion guarda el valor de la aceleracion del vehiculo
@@ -34,7 +34,7 @@ public class CarrosDeportivos extends CarrosPrincipal{
      * @param numeroRuedas
      * @param cilindraje 
      */
-    public CarrosDeportivos(String marca, int precio, String color, int numeroRuedas, int cilindraje) {
+    public CarrosDeportivo(String marca, int precio, String color, int numeroRuedas, int cilindraje) {
         super(marca, precio, color, numeroRuedas, cilindraje);
         aceleracion=0;
         velocidadMaxima=0;
@@ -45,7 +45,7 @@ public class CarrosDeportivos extends CarrosPrincipal{
     /**
      * CarrosDeportivos es un constructor vacio que permite dejar quemados ciertos datos
      */
-    public CarrosDeportivos() {
+    public CarrosDeportivo() {
     }
 
  
@@ -109,16 +109,5 @@ public class CarrosDeportivos extends CarrosPrincipal{
     public void setCaballosFuerza(int caballosFuerza) {
         this.caballosFuerza = caballosFuerza;
     }
-    
-    /*
-    pintarCarro me permite mostrar las caracteristicas del carro agregado
-    */
-     public void pintarCarro() {
-        System.out.println ("el vehiculo deportivo es: " + getMarca()+ "\n su color es:" +  getColor()+
-         "\n su precio es: " + getPrecio()+"\n su numero de ruedas es: "+getNumeroRuedas()
-                +"\n su cilindraje es:"+getCilindraje()+"\n su aceleracion es:"+getAceleracion()+"\n su adherencia es:"+getAdherenciaAsfalto()
-       +"\n sus caballos de fuerza son:"+getCaballosFuerza()+"\n su velocidad maxima es:"+getVelocidadMaxima()); }
-    
-   
      
 }

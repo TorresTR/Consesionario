@@ -4,7 +4,7 @@ package com.udec.consesionario;
  * Esta clase tiene los atributos de los autos personalizados
  * @author David
  */
-public class CarrosPersonalizados extends CarrosPrincipal{
+public class CarrosPersonalizado extends CarrosPrincipal{
     
     /*
     alerones guarda la cantidad de alerones que tiene un carro
@@ -29,7 +29,7 @@ public class CarrosPersonalizados extends CarrosPrincipal{
      * @param numeroRuedas
      * @param cilindraje 
      */
-    public CarrosPersonalizados(String marca, int precio, String color, int numeroRuedas, int cilindraje) {
+    public CarrosPersonalizado(String marca, int precio, String color, int numeroRuedas, int cilindraje) {
         super(marca, precio, color, numeroRuedas, cilindraje);
         alerones=0;
         tamañoRuedas=0;
@@ -39,7 +39,7 @@ public class CarrosPersonalizados extends CarrosPrincipal{
     /**
      * CarrosPersonalizados contructor vacio que se usara para dejar los datos quedamos
      */
-    public CarrosPersonalizados() {
+    public CarrosPersonalizado() {
     }
 
     /**
