@@ -9,7 +9,22 @@ import java.util.Scanner;
  */
 
 public class ClasePrincipal {
-     ArrayList listaVehiculos = new ArrayList<>();
+        //inicializamos el ArrayList
+        ArrayList listaVehiculos = new ArrayList<>();
+        //Inicializamos el escáner
+        Scanner scanner = new Scanner(System.in);
+        /**
+         * instanciamos las calses hijas
+         */
+        CarrosDeportivo cd;
+        CarrosEstandar ce;
+        CarrosMaquinaria cm;
+        CarrosPersonalizado cp;
+    
+        /**
+         * Metodo main para iniciar la ejecucion del programa
+         * @param args 
+         */
         public static void main (String [ ] args) {          
             ClasePrincipal cs = new ClasePrincipal();
             cs.menu();
@@ -17,8 +32,6 @@ public class ClasePrincipal {
     } //Cierre del main
         
     public  void menu(){
-            //Inicializamos el escáner
-            Scanner scanner = new Scanner(System.in);
             System.out.println ("Bienvenido al meno del Consesionario:");
             System.out.println ("Seleccione una opcion");
             System.out.println ("1.Insertar autos");
@@ -40,8 +53,6 @@ public class ClasePrincipal {
     }
         
     public  void menuInsertar(){
-        //Inicializamos el escáner
-        Scanner scanner = new Scanner(System.in);
         System.out.println ("Seleccione el auto quiere insertar");
         System.out.println ("1. Autos Deportivos");
         System.out.println ("2. Autos Estandar");
@@ -51,16 +62,16 @@ public class ClasePrincipal {
         int variableSeleccion=Integer.parseInt(variableControl);
         switch (variableSeleccion) {
             case 1:
-                insertarDeportivos();
+                capturaDeportivos();
                 break;
             case 2:
-                insertarEstandar();
+                capturarEstandar();
                 break;
             case 3:
-                insertarMaquinaria();
+                CapturarMaquinaria();
                 break;
             case 4:
-                insertarPersonalizado();
+                capturarPersonalizado();
                 break;
             default:
                 System.out.println ("Seleccione una opcion valida");
@@ -69,9 +80,7 @@ public class ClasePrincipal {
             }
     } 
     
-    public void insertarDeportivos(){
-        //Inicializamos el escáner
-        Scanner scanner = new Scanner(System.in);
+    public void capturaDeportivos(){
         //Pedimos los datos de los vehiculos deportivos
         System.out.print("Ingresa La marca del vehiculo: ");
         String marcaVehiculo = scanner.nextLine();
@@ -98,7 +107,10 @@ public class ClasePrincipal {
         System.out.print("Ingresa los caballos de fuerza del vehiculo: ");
         String caballosFuerza = scanner.nextLine();
         int cf=Integer.parseInt(caballosFuerza);
-        CarrosDeportivo cd;
+        insertarDeportivo(marcaVehiculo, pv, colorVehiculo, nr, cv, av, aA, cf, vm);
+    }
+    
+    public void insertarDeportivo(String marcaVehiculo,int pv,String colorVehiculo,int nr,int cv, int av,int aA,int cf,int vm){
         cd= new CarrosDeportivo(marcaVehiculo,pv,colorVehiculo,nr,cv);
         cd.setAceleracion(av);
         cd.setAdherenciaAsfalto(aA);
@@ -108,9 +120,7 @@ public class ClasePrincipal {
         menuInsertar();
     }
     
-    public void insertarEstandar(){
-        //Inicializamos el escáner
-        Scanner scanner = new Scanner(System.in);
+    public void capturarEstandar(){
         //Pedimos los datos de los vehiculos deportivos
         System.out.print("Ingresa La marca del vehiculo: ");
         String marcaVehiculo = scanner.nextLine();
@@ -133,7 +143,10 @@ public class ClasePrincipal {
         System.out.print("Ingresa el numero de pasajeros del vehiculo: ");
         String numeroPasajeros = scanner.nextLine();
         int np=Integer.parseInt(numeroPasajeros);
-        CarrosEstandar ce;
+        insertarEstandar(marcaVehiculo, pv, colorVehiculo, nr, cv, cvc, ergonomia, np);
+    }
+    
+    public void insertarEstandar(String marcaVehiculo,int pv,String colorVehiculo,int nr,int cv, int cvc,String ergonomia,int np){
         ce= new CarrosEstandar(marcaVehiculo,pv,colorVehiculo,nr,cv);
         ce.setConsumoConbustible(cvc);
         ce.setErgonomia(ergonomia);
@@ -142,9 +155,8 @@ public class ClasePrincipal {
         menuInsertar();
     }
     
-    public void insertarMaquinaria(){
-        //Inicializamos el escáner
-        Scanner scanner = new Scanner(System.in);
+    
+    public void CapturarMaquinaria(){
         //Pedimos los datos de los vehiculos deportivos
         System.out.print("Ingresa La marca del vehiculo: ");
         String marcaVehiculo = scanner.nextLine();
@@ -167,7 +179,10 @@ public class ClasePrincipal {
         int  horu=Integer.parseInt(horugas);
         System.out.print("Ingresa tipo de carga o de trabajo del vehiculo: ");
         String tipoTrabajo = scanner.nextLine();
-        CarrosMaquinaria cm;
+        insertarMaquinaria(marcaVehiculo, pv, colorVehiculo, nr, cv, pvton, horu, tipoTrabajo);
+    }
+    
+    public void insertarMaquinaria(String marcaVehiculo,int pv,String colorVehiculo,int nr,int cv, int pvton,int horu,String tipoTrabajo){
         cm= new CarrosMaquinaria(marcaVehiculo,pv,colorVehiculo,nr,cv);
         cm.setPesoTon(pvton);
         cm.setHorugas(horu);
@@ -176,9 +191,8 @@ public class ClasePrincipal {
         menuInsertar();
     }
     
-    public void insertarPersonalizado(){
-        //Inicializamos el escáner
-        Scanner scanner = new Scanner(System.in);
+    
+    public void capturarPersonalizado(){
         //Pedimos los datos de los vehiculos deportivos
         System.out.print("Ingresa La marca del vehiculo: ");
         String marcaVehiculo = scanner.nextLine();
@@ -201,7 +215,10 @@ public class ClasePrincipal {
         int  tr=Integer.parseInt(tamañoRuedas);
         System.out.print("Ingresa NO2 en el  vehiculo: ");
         String no2 = scanner.nextLine();
-        CarrosPersonalizado cp;
+        insertarPersonalizado(marcaVehiculo, pv, colorVehiculo, nr, cv, av, tr, no2);
+    }
+    
+    public void insertarPersonalizado(String marcaVehiculo,int pv,String colorVehiculo,int nr,int cv, int av,int tr,String no2){
         cp= new CarrosPersonalizado(marcaVehiculo,pv,colorVehiculo,nr,cv);
         cp.setAlerones(av);
         cp.setTamañoRuedas(tr);
@@ -209,8 +226,6 @@ public class ClasePrincipal {
         listaVehiculos.add(cp);
         menuInsertar();
     }
-    
-    
     
     
 }//clase principal
