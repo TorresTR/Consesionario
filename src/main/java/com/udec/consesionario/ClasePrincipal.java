@@ -7,13 +7,64 @@ import java.util.Scanner;
  * @author David
  */
 public class ClasePrincipal {
-        public static void main (String [ ] args) {
-
-        System.out.println ("Bienvenido al meno del Consesionario:");
-        System.out.println ("Seleccione una opcion");
+        public static void main (String [ ] args) {          
+            ClasePrincipal cs = new ClasePrincipal();
+            cs.menu();
     } //Cierre del main
         
+    public  void menu(){
+            //Inicializamos el escáner
+            Scanner scanner = new Scanner(System.in);
+            System.out.println ("Bienvenido al meno del Consesionario:");
+            System.out.println ("Seleccione una opcion");
+            System.out.println ("1.Insertar autos");
+            System.out.println ("2.Insertar empleados");
+            System.out.println ("3.vender autos");
+            String variableControl = scanner.nextLine();
+            int variableSeleccion=Integer.parseInt(variableControl);
+            
+            if(variableSeleccion==1){
+                menuInsertar();
+            }else if(variableSeleccion==2){
+                
+            }else if(variableSeleccion==3){
+                
+            }else{
+                System.out.println ("Inserte una opcion valida");
+                menu();
+            }
+    }
         
+    public  void menuInsertar(){
+        //Inicializamos el escáner
+        Scanner scanner = new Scanner(System.in);
+        System.out.println ("Seleccione el auto quiere insertar");
+        System.out.println ("1. Autos Deportivos");
+        System.out.println ("2. Autos Estandar");
+        System.out.println ("3. Maquinarias");
+        System.out.println ("4. Autos Personalizados");
+        String variableControl = scanner.nextLine();
+        int variableSeleccion=Integer.parseInt(variableControl);
+        switch (variableSeleccion) {
+            case 1:
+                insertarDeportivos();
+                break;
+            case 2:
+                insertarEstandar();
+                break;
+            case 3:
+                insertarMaquinaria();
+                break;
+            case 4:
+                insertarPersonalizado();
+                break;
+            default:
+                System.out.println ("Seleccione una opcion valida");
+                menuInsertar();
+                break;
+            }
+    } 
+    
     public void insertarDeportivos(){
         //Inicializamos el escáner
         Scanner scanner = new Scanner(System.in);
@@ -50,6 +101,7 @@ public class ClasePrincipal {
         cd.setCaballosFuerza(cf);
         cd.setVelocidadMaxima(vm);
         cd.listaVehiculos.add(cd);
+        menuInsertar();
     }
     
     public void insertarEstandar(){
@@ -83,6 +135,7 @@ public class ClasePrincipal {
         ce.setErgonomia(ergonomia);
         ce.setNumeroPasajaeros(np);
         ce.listaVehiculos.add(ce);
+        menuInsertar();
     }
     
     public void insertarMaquinaria(){
@@ -116,6 +169,7 @@ public class ClasePrincipal {
         cm.setHorugas(horu);
         cm.setTipoTrabajo(tipoTrabajo);
         cm.listaVehiculos.add(cm);
+        menuInsertar();
     }
     
     public void insertarPersonalizado(){
@@ -149,6 +203,7 @@ public class ClasePrincipal {
         cp.setTamañoRuedas(tr);
         cp.setNo2(no2);
         cp.listaVehiculos.add(cp);
+        menuInsertar();
     }
     
     
