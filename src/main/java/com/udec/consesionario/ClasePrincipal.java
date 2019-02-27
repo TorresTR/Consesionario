@@ -4,14 +4,23 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- *
+ * Esta es la clase principal donde se ejecutara todo el programa, donde estan los menus 
+ * y algunos metodos para ejecuion 
  * @author David
  */
 
 public class ClasePrincipal {
-        //inicializamos el ArrayList
-        ArrayList listaVehiculos = new ArrayList<>();
-        //Inicializamos el escáner
+        /**
+         * Se inicializan los ArrayList para, poder guardar los automoviles en sus respectivas
+         * listas
+         */
+        ArrayList listaCarrosDeportivos = new ArrayList<>();
+        ArrayList listaCarrosEstandar = new ArrayList<>();
+        ArrayList listaCarrosMaquinaria = new ArrayList<>();
+        ArrayList listaCarrosPersonalizado = new ArrayList<>();
+        /**
+         * Inicializa el scanner para capturar las variables de entradas
+         */
         Scanner scanner = new Scanner(System.in);
         /**
          * instanciamos las calses hijas
@@ -50,7 +59,7 @@ public class ClasePrincipal {
                 System.out.println ("Inserte una opcion valida");
                 menu();
             }
-    }
+        }//menu Principal   
         
     public  void menuInsertar(){
         System.out.println ("Seleccione el auto quiere insertar");
@@ -58,6 +67,7 @@ public class ClasePrincipal {
         System.out.println ("2. Autos Estandar");
         System.out.println ("3. Maquinarias");
         System.out.println ("4. Autos Personalizados");
+        System.out.println ("5. Volver la menu");
         String variableControl = scanner.nextLine();
         int variableSeleccion=Integer.parseInt(variableControl);
         switch (variableSeleccion) {
@@ -73,12 +83,15 @@ public class ClasePrincipal {
             case 4:
                 capturarPersonalizado();
                 break;
+            case 5:
+                menu();
+                break;
             default:
                 System.out.println ("Seleccione una opcion valida");
                 menuInsertar();
                 break;
             }
-    } 
+        }//menu de captura de datos (insercion) 
     
     public void capturaDeportivos(){
         //Pedimos los datos de los vehiculos deportivos
@@ -108,7 +121,7 @@ public class ClasePrincipal {
         String caballosFuerza = scanner.nextLine();
         int cf=Integer.parseInt(caballosFuerza);
         insertarDeportivo(marcaVehiculo, pv, colorVehiculo, nr, cv, av, aA, cf, vm);
-    }
+    }//captura los datos de los autos deportivos
     
     public void insertarDeportivo(String marcaVehiculo,int pv,String colorVehiculo,int nr,int cv, int av,int aA,int cf,int vm){
         cd= new CarrosDeportivo(marcaVehiculo,pv,colorVehiculo,nr,cv);
@@ -116,7 +129,7 @@ public class ClasePrincipal {
         cd.setAdherenciaAsfalto(aA);
         cd.setCaballosFuerza(cf);
         cd.setVelocidadMaxima(vm);
-        listaVehiculos.add(cd);
+        listaCarrosDeportivos.add(cd);
         menuInsertar();
     }
     
@@ -151,7 +164,7 @@ public class ClasePrincipal {
         ce.setConsumoConbustible(cvc);
         ce.setErgonomia(ergonomia);
         ce.setNumeroPasajaeros(np);
-        listaVehiculos.add(ce);
+        listaCarrosEstandar.add(ce);
         menuInsertar();
     }
     
@@ -187,7 +200,7 @@ public class ClasePrincipal {
         cm.setPesoTon(pvton);
         cm.setHorugas(horu);
         cm.setTipoTrabajo(tipoTrabajo);
-        listaVehiculos.add(cm);
+        listaCarrosMaquinaria.add(cm);
         menuInsertar();
     }
     
@@ -223,7 +236,7 @@ public class ClasePrincipal {
         cp.setAlerones(av);
         cp.setTamañoRuedas(tr);
         cp.setNo2(no2);
-        listaVehiculos.add(cp);
+        listaCarrosPersonalizado.add(cp);
         menuInsertar();
     }
     
