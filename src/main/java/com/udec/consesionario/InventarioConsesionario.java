@@ -12,15 +12,15 @@ import java.util.Comparator;
  * @author David
  */
 public class InventarioConsesionario{
-    
+    /**
+     * Se declaran las listas de que se van usar, para manejo del inventario,
+     * y que seran usadas para guardar los datos del mas caro mas bararo 
+     * y las lista unificada del los autos en lista inventario
+     */
     ArrayList listaInventario = new ArrayList<>();
     ArrayList listaMasCaro = new ArrayList<>();
     ArrayList listaMasBarato = new ArrayList<>();
     ClasePrincipal pricipal = new ClasePrincipal();
-   /**
-    * identificadorInventario indica cual es el seria del carro en el momento
-    */
-    private int identificadorInventario;
 
     /**
      * este es el constructo vacio para pocer intaciar los metodos de la clase
@@ -28,63 +28,27 @@ public class InventarioConsesionario{
     public InventarioConsesionario() {        
     }
 
-    /**
-     * Retorna el valor del indenficador del inventario
-     * @return identificadorInventario
-     */
-    public int getIdentificadorInventario() {
-        return identificadorInventario;
-    }
-
-    /**
-     * Permite asignar un id para el inventario 
-     * @param identificadorInventario 
-     */
-    public void setIdentificadorInventario(int identificadorInventario) {
-        this.identificadorInventario = identificadorInventario;
-    }
-
-    
-    
-    public void listadoInventario(ArrayList listaDeportivos,ArrayList listaEstandar,ArrayList listaMaquinaria,ArrayList listaPersonalizado){
-    
-        
-        listaInventario.add(listaDeportivos);
-        listaInventario.add(listaEstandar);
-        listaInventario.add(listaMaquinaria);
-        listaInventario.add(listaPersonalizado);
-    
-        int index = -1;
-        int bound = listaInventario.size();
-        for (int userInd = 0; userInd < bound; userInd++) {
-        if (listaInventario.get(userInd).equals(bound)) {
-            index = userInd;
-            identificadorInventario=userInd;
-            listaInventario.add(index, identificadorInventario);
-            break;
-            }
-        }
-    }
 
     
     /**
-     * 
-     * @param listaDeportivos
-     * @param listaEstandar
-     * @param listaMaquinaria
-     * @param listaPersonalizado 
+     * Este metodo recibe 4 Arraylist los cuales contiene  los datos de los autos, se envian a los metodos de hallar 
+     * para que las listas sean organizadas de mayo a menor y son guardados en lista mas caro, luego de lista mas caro usando 
+     * compare comparamos y obtenemos el meyor de todos ellos
+     * @param listaDeportivos = lista que contiene los datos de los vehiculos deportivos
+     * @param listaEstandar = lista que contiene los datos de los vehiculos estandar
+     * @param listaMaquinaria = lista que contiene de datos de la mquinaria
+     * @param listaPersonalizado = lista que contiene los datos de los vehiculos personalizados
      */
     public void masCaro(ArrayList listaDeportivos,ArrayList listaEstandar,ArrayList listaMaquinaria,ArrayList listaPersonalizado){
         hallarDeportivoMayor(listaDeportivos);
         hallarEstandarMayor(listaEstandar);
         hallarMaquinariaMayor(listaMaquinaria);
-        hallarPersonalizadoMayor(listaPersonalizado);      
-        listadoInventario(listaDeportivos, listaEstandar, listaMaquinaria, listaPersonalizado); 
+        hallarPersonalizadoMayor(listaPersonalizado);       
         Collections.sort(listaMasCaro, new Comparator<CarrosPrincipal>() {
         @Override
         public int compare(CarrosPrincipal p1, CarrosPrincipal p2) {
             int  variableComparadora;
-            variableComparadora = new Integer(p2.getPrecio()).compareTo(p1.getPrecio());            
+            variableComparadora = new Integer(p2.getPrecio()).compareTo(p1.getPrecio());
             return variableComparadora;
             }
         });
@@ -94,11 +58,42 @@ public class InventarioConsesionario{
             +"y su precio es:"+carro.getPrecio());
             break;
         }
-        pricipal.menu();
+        pricipal.autosPordefecto();
     }// mas caro fin
    
-    public void hallarDeportivoMayor(ArrayList listaDeportivos ){
-        Collections.sort(listaDeportivos, new Comparator<CarrosDeportivo>() {
+    
+    public void masBarato(ArrayList listaDeportivos,ArrayList listaEstandar,ArrayList listaMaquinaria,ArrayList listaPersonalizado){
+        hallarDeportivoMenor(listaDeportivos);
+        hallarEstandarMenor(listaEstandar);
+        hallarMaquinariaMenor(listaMaquinaria);
+        hallarPersonalizadoMenor(listaPersonalizado);       
+        Collections.sort(listaMasBarato, new Comparator<CarrosPrincipal>() {
+        @Override
+        public int compare(CarrosPrincipal p1, CarrosPrincipal p2) {
+            int  variableComparadora;
+            variableComparadora = new Integer(p1.getPrecio()).compareTo(p2.getPrecio());            
+            return variableComparadora;
+            }
+        });
+        for (Object obj : listaMasBarato) {
+            CarrosPrincipal carro = (CarrosPrincipal)obj;
+            System.out.println("El vechiculo mas Barato es:"+""+carro.getMarca()+"\n"
+            +"y su precio es:"+carro.getPrecio());
+            break;
+        }
+        pricipal.autosPordefecto();
+    }// mas caro fin
+    
+    
+    
+    /**
+     * Recibe un arraylist de listaDeportivos el cual se encargara de organizar de mayor a menor y almacenara el vehiculo
+     * el cual tenga el mayor precrio en dicha lista
+     * @param listaDeportivos
+     */
+    public void hallarDeportivoMayor(ArrayList listaDeportivos){
+  
+            Collections.sort(listaDeportivos, new Comparator<CarrosDeportivo>() {
             @Override
             public int compare(CarrosDeportivo p1, CarrosDeportivo p2) {
               int  variableComparadora;
@@ -106,12 +101,32 @@ public class InventarioConsesionario{
               listaMasCaro.add(p2);
               return variableComparadora;
             }
-        });
+           });
+            
     }
     
-    public void hallarEstandarMayor(ArrayList listaEstandar ){
-        Collections.sort(listaEstandar, new Comparator<CarrosEstandar>() {
-
+    public void hallarDeportivoMenor(ArrayList listaDeportivos){
+       
+            Collections.sort(listaDeportivos, new Comparator<CarrosDeportivo>() {
+            @Override
+             public int compare(CarrosDeportivo p1, CarrosDeportivo p2) {
+              int  variableComparadora;
+              variableComparadora = new Integer(p1.getPrecio()).compareTo(p2.getPrecio());
+              listaMasBarato.add(p1);
+              return variableComparadora;
+                }
+            });
+    }    
+    
+    
+    /**
+     * Recibe un arraylist de listaEstandar el cual se encargara de organizar de mayor a menor y almacenara el vehiculo
+     * el cual tenga el mayor precrio en dicha lista
+     * @param listaEstandar 
+     */
+    public void hallarEstandarMayor(ArrayList listaEstandar){
+       
+            Collections.sort(listaEstandar, new Comparator<CarrosEstandar>() {
             @Override
             public int compare(CarrosEstandar p1, CarrosEstandar p2) {
               int  variableComparadora;
@@ -119,13 +134,64 @@ public class InventarioConsesionario{
               listaMasCaro.add(p2);
               return variableComparadora;
             }
-        });
+        });         
     }
+    
+    public void hallarEstandarMenor(ArrayList listaEstandar){
+       
+            Collections.sort(listaEstandar, new Comparator<CarrosEstandar>() {
+            @Override
+            public int compare(CarrosEstandar p1, CarrosEstandar p2) {
+              int  variableComparadora;
+              variableComparadora = new Integer(p1.getPrecio()).compareTo(p2.getPrecio());
+              listaMasBarato.add(p1);
+              return variableComparadora;
+            }
+        });         
+    }
+    
+    /**
+     * Recibe un arraylist de listaMaquinaria el cual se encargara de organizar de mayor a menor y almacenara el vehiculo
+     * el cual tenga el mayor precrio en dicha lista
+     * @param listaMaquinaria 
+     */
     public void hallarMaquinariaMayor(ArrayList listaMaquinaria ){
-        Collections.sort(listaMaquinaria, new Comparator<CarrosMaquinaria>() {
-
+ 
+            Collections.sort(listaMaquinaria, new Comparator<CarrosMaquinaria>() {
             @Override
             public int compare(CarrosMaquinaria p1, CarrosMaquinaria p2) {
+              int  variableComparadora;
+              variableComparadora = new Integer(p2.getPrecio()).compareTo(p1.getPrecio());
+              listaMasCaro.add(p2);
+              return variableComparadora;
+            }
+        });              
+    }
+    
+    
+    public void hallarMaquinariaMenor(ArrayList listaMaquinaria ){
+ 
+            Collections.sort(listaMaquinaria, new Comparator<CarrosMaquinaria>() {
+            @Override
+            public int compare(CarrosMaquinaria p1, CarrosMaquinaria p2) {
+              int  variableComparadora;
+              variableComparadora = new Integer(p1.getPrecio()).compareTo(p2.getPrecio());
+              listaMasBarato.add(p1);
+              return variableComparadora;
+            }
+        });              
+    }
+    
+    /**
+     * Recibe un arraylist de listaPersonalizado el cual se encargara de organizar de mayor a menor y almacenara el vehiculo
+     * el cual tenga el mayor precrio en dicha lista
+     * @param listaPersonalizado 
+     */
+    public void hallarPersonalizadoMayor(ArrayList listaPersonalizado ){
+        
+            Collections.sort(listaPersonalizado, new Comparator<CarrosPersonalizado>() {
+            @Override
+            public int compare(CarrosPersonalizado p1, CarrosPersonalizado p2) {
               int  variableComparadora;
               variableComparadora = new Integer(p2.getPrecio()).compareTo(p1.getPrecio());
               listaMasCaro.add(p2);
@@ -134,14 +200,15 @@ public class InventarioConsesionario{
         });   
     }
     
-    public void hallarPersonalizadoMayor(ArrayList listaPersonalizado ){
-        Collections.sort(listaPersonalizado, new Comparator<CarrosPersonalizado>() {
-
+    
+    public void hallarPersonalizadoMenor(ArrayList listaPersonalizado ){
+        
+            Collections.sort(listaPersonalizado, new Comparator<CarrosPersonalizado>() {
             @Override
             public int compare(CarrosPersonalizado p1, CarrosPersonalizado p2) {
               int  variableComparadora;
-              variableComparadora = new Integer(p2.getPrecio()).compareTo(p1.getPrecio());
-              listaMasCaro.add(p2);
+              variableComparadora = new Integer(p1.getPrecio()).compareTo(p2.getPrecio());
+              listaMasBarato.add(p1);
               return variableComparadora;
             }
         });   

@@ -34,6 +34,16 @@ public abstract class CarrosPrincipal {
     */
     private int cilindraje;
 
+    public int getIdInventario() {
+        return idInventario;
+    }
+
+    public void setIdInventario(int idInventario) {
+        this.idInventario = idInventario;
+    }
+
+    private int idInventario;
+    
     /**
      * Este constructor permite inicializar con los datos Basicos para almacenar un vehiculo
      * @param marca
