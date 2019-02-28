@@ -36,16 +36,101 @@ public class ClasePrincipal {
          */
         public static void main (String [ ] args) {          
             ClasePrincipal cs = new ClasePrincipal();
-            cs.menu();
+            cs.autosPordefecto();
              
     } //Cierre del main
+    
+    /**
+     * esta clase insarta los autos por defecto al iniciar el programa
+     */
+    public void autosPordefecto(){
+        /**
+         * insercion auto, personalizado
+         */
+        cp= new CarrosPersonalizado("bmw",120000,"rojo",4,1200);
+        cp.setAlerones(4);
+        cp.setTamañoRuedas(22);
+        cp.setNo2("si tiene no2");
+        listaCarrosPersonalizado.add(cp);
         
+        /**
+         * insercion de auto tipo maquinaria
+         */
+        cm= new CarrosMaquinaria("jhonn deer",500000,"verde",16,800);
+        cm.setPesoTon(16);
+        cm.setHorugas(0);
+        cm.setTipoTrabajo("camion de carga pesada");
+        listaCarrosMaquinaria.add(cm);
+        
+        /**
+         * insertar auto deportivo
+         */
+        cd= new CarrosDeportivo("ferrari",300000,"azul",4,200);
+        cd.setAceleracion(3);
+        cd.setAdherenciaAsfalto(50);
+        cd.setCaballosFuerza(500);
+        cd.setVelocidadMaxima(450);
+        listaCarrosDeportivos.add(cd);
+        
+        /**
+         * insertar autos estandar
+         */
+        ce= new CarrosEstandar("toyota",50000,"gris",4,500);
+        ce.setConsumoConbustible(19);
+        ce.setErgonomia("consumo de ocnbustible bajo y ergonomico");
+        ce.setNumeroPasajaeros(6);
+        listaCarrosEstandar.add(ce);
+        
+        
+         /**
+         * insercion auto, personalizado
+         */
+        cp= new CarrosPersonalizado("subaru",140000,"rojo",2,120);
+        cp.setAlerones(2);
+        cp.setTamañoRuedas(12);
+        cp.setNo2("no tiene no2");
+        listaCarrosPersonalizado.add(cp);
+        
+        /**
+         * insercion de auto tipo maquinaria
+         */
+        cm= new CarrosMaquinaria("Ford",6000,"negro",16,80);
+        cm.setPesoTon(13);
+        cm.setHorugas(2);
+        cm.setTipoTrabajo("retroescavadora");
+        listaCarrosMaquinaria.add(cm);
+        
+        /**
+         * insertar auto deportivo
+         */
+        cd= new CarrosDeportivo("maserrati",30000,"amarillo",4,20);
+        cd.setAceleracion(34);
+        cd.setAdherenciaAsfalto(10);
+        cd.setCaballosFuerza(200);
+        cd.setVelocidadMaxima(650);
+        listaCarrosDeportivos.add(cd);
+        
+        /**
+         * insertar autos estandar
+         */
+        ce= new CarrosEstandar("mazda",2000,"gris",4,20);
+        ce.setConsumoConbustible(2);
+        ce.setErgonomia("solo ergonomico");
+        ce.setNumeroPasajaeros(3);
+        listaCarrosEstandar.add(ce);
+        
+        menu();
+    }
+    
+    
     public  void menu(){
             System.out.println ("Bienvenido al meno del Consesionario:");
             System.out.println ("Seleccione una opcion");
             System.out.println ("1.Insertar autos");
             System.out.println ("2.Insertar empleados");
             System.out.println ("3.vender autos");
+            System.out.println ("4.vehiculo Mas Caro");
+            System.out.println ("5.vehiculo Mas barato ");
             String variableControl = scanner.nextLine();
             int variableSeleccion=Integer.parseInt(variableControl);
             
@@ -54,6 +139,18 @@ public class ClasePrincipal {
             }else if(variableSeleccion==2){
                 
             }else if(variableSeleccion==3){
+                
+            }else if (variableSeleccion == 4){
+                InventarioConsesionario inventarioC = new InventarioConsesionario();
+                if(listaCarrosDeportivos != null && listaCarrosEstandar !=null && listaCarrosMaquinaria !=null && listaCarrosPersonalizado !=null){
+                   inventarioC.masCaro(listaCarrosDeportivos, listaCarrosEstandar, listaCarrosMaquinaria, listaCarrosPersonalizado);
+                    
+                }else{
+                    System.out.println ("no hay datos de vehiculos inserve uno valido");
+                    menu();
+                }
+                
+            }else if (variableSeleccion == 5){
                 
             }else{
                 System.out.println ("Inserte una opcion valida");
