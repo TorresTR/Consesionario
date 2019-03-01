@@ -181,7 +181,9 @@ public class ClasePrincipal {
         menu();
     }
     
-    
+    /**
+     * menu para moverse por el programa 
+     */
     public  void menu(){
             System.out.println ("Bienvenido al meno del Consesionario:");
             System.out.println ("Seleccione una opcion");
@@ -226,6 +228,9 @@ public class ClasePrincipal {
             }
         }//menu Principal   
         
+    /**
+     * menu que manjea la insercion de autos 
+     */
     public  void menuInsertar(){
         System.out.println ("Seleccione el auto quiere insertar");
         System.out.println ("1. Autos Deportivos");
@@ -258,6 +263,9 @@ public class ClasePrincipal {
             }
         }//menu de captura de datos (insercion) 
     
+    /**
+     * se capturan los datos de los vehiculos deportivos para poder añadirse en la lista
+     */
     public void capturaDeportivos(){
         //Pedimos los datos de los vehiculos deportivos
         System.out.print("Ingresa La marca del vehiculo: ");
@@ -288,6 +296,18 @@ public class ClasePrincipal {
         insertarDeportivo(marcaVehiculo, pv, colorVehiculo, nr, cv, av, aA, cf, vm);
     }//captura los datos de los autos deportivos
     
+    /**
+     * Solicita los parametros para poder insertar en el arraylist correspondiente
+     * @param marcaVehiculo
+     * @param pv
+     * @param colorVehiculo
+     * @param nr
+     * @param cv
+     * @param av
+     * @param aA
+     * @param cf
+     * @param vm 
+     */
     public void insertarDeportivo(String marcaVehiculo,int pv,String colorVehiculo,int nr,int cv, int av,int aA,int cf,int vm){
         cd= new CarrosDeportivo(marcaVehiculo,pv,colorVehiculo,nr,cv);
         cd.setAceleracion(av);
@@ -307,6 +327,9 @@ public class ClasePrincipal {
         menuInsertar();
     }
     
+    /**
+     * captura los datos para, necesarios para poder insertar CarrosEstandar
+     */
     public void capturarEstandar(){
         //Pedimos los datos de los vehiculos deportivos
         System.out.print("Ingresa La marca del vehiculo: ");
@@ -333,6 +356,17 @@ public class ClasePrincipal {
         insertarEstandar(marcaVehiculo, pv, colorVehiculo, nr, cv, cvc, ergonomia, np);
     }
     
+    /**
+     * SOlicita los datos necesarios de Autos estandar para poder ser insertados 
+     * @param marcaVehiculo
+     * @param pv
+     * @param colorVehiculo
+     * @param nr
+     * @param cv
+     * @param cvc
+     * @param ergonomia
+     * @param np 
+     */
     public void insertarEstandar(String marcaVehiculo,int pv,String colorVehiculo,int nr,int cv, int cvc,String ergonomia,int np){
         ce= new CarrosEstandar(marcaVehiculo,pv,colorVehiculo,nr,cv);
         ce.setConsumoConbustible(cvc);
@@ -350,6 +384,9 @@ public class ClasePrincipal {
     }
     
     
+    /**
+     * Captura los datos necesarios para poder ser insertado en la lista de MAquinaria
+     */
     public void CapturarMaquinaria(){
         //Pedimos los datos de los vehiculos deportivos
         System.out.print("Ingresa La marca del vehiculo: ");
@@ -376,6 +413,17 @@ public class ClasePrincipal {
         insertarMaquinaria(marcaVehiculo, pv, colorVehiculo, nr, cv, pvton, horu, tipoTrabajo);
     }
     
+    /**
+     * Solicita los datos minimos para poder insertar en los Arraylist el nuevo, vehiculo
+     * @param marcaVehiculo
+     * @param pv
+     * @param colorVehiculo
+     * @param nr
+     * @param cv
+     * @param pvton
+     * @param horu
+     * @param tipoTrabajo 
+     */
     public void insertarMaquinaria(String marcaVehiculo,int pv,String colorVehiculo,int nr,int cv, int pvton,int horu,String tipoTrabajo){
         cm= new CarrosMaquinaria(marcaVehiculo,pv,colorVehiculo,nr,cv);
         cm.setPesoTon(pvton);
@@ -393,6 +441,9 @@ public class ClasePrincipal {
     }
     
     
+    /**
+     * Solicita los datos necesarios de los autos personalizados
+     */
     public void capturarPersonalizado(){
         //Pedimos los datos de los vehiculos deportivos
         System.out.print("Ingresa La marca del vehiculo: ");
@@ -419,6 +470,17 @@ public class ClasePrincipal {
         insertarPersonalizado(marcaVehiculo, pv, colorVehiculo, nr, cv, av, tr, no2);
     }
     
+    /**
+     * REcibe los parametros necesarios para insertar, en el arraylist de autos personalizados
+     * @param marcaVehiculo
+     * @param pv
+     * @param colorVehiculo
+     * @param nr
+     * @param cv
+     * @param av
+     * @param tr
+     * @param no2 
+     */
     public void insertarPersonalizado(String marcaVehiculo,int pv,String colorVehiculo,int nr,int cv, int av,int tr,String no2){
         cp= new CarrosPersonalizado(marcaVehiculo,pv,colorVehiculo,nr,cv);
         cp.setAlerones(av);

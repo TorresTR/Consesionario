@@ -62,6 +62,14 @@ public class InventarioConsesionario{
     }// mas caro fin
    
     
+    /**
+     * Recibe las 4 listas  para enviarlas y que sean ordenadas de menor a mayor para luiego ser guardadas en la lista de mas baratos
+     * y calcular cual es el auto mas barato de todos
+     * @param listaDeportivos
+     * @param listaEstandar
+     * @param listaMaquinaria
+     * @param listaPersonalizado 
+     */
     public void masBarato(ArrayList listaDeportivos,ArrayList listaEstandar,ArrayList listaMaquinaria,ArrayList listaPersonalizado){
         hallarDeportivoMenor(listaDeportivos);
         hallarEstandarMenor(listaEstandar);
@@ -105,6 +113,10 @@ public class InventarioConsesionario{
             
     }
     
+    /**
+     * Halla el autodeportivo de menor valor
+     * @param listaDeportivos 
+     */
     public void hallarDeportivoMenor(ArrayList listaDeportivos){
        
             Collections.sort(listaDeportivos, new Comparator<CarrosDeportivo>() {
@@ -137,6 +149,10 @@ public class InventarioConsesionario{
         });         
     }
     
+    /**
+     * Hallar el auto estandar de menor valor 
+     * @param listaEstandar 
+     */
     public void hallarEstandarMenor(ArrayList listaEstandar){
        
             Collections.sort(listaEstandar, new Comparator<CarrosEstandar>() {
@@ -168,7 +184,11 @@ public class InventarioConsesionario{
         });              
     }
     
-    
+    /**
+     * Recibe un ArrayList y retorna el de menor valor en la lista de maquinaria
+     * 
+     * @param listaMaquinaria 
+     */
     public void hallarMaquinariaMenor(ArrayList listaMaquinaria ){
  
             Collections.sort(listaMaquinaria, new Comparator<CarrosMaquinaria>() {
@@ -200,7 +220,10 @@ public class InventarioConsesionario{
         });   
     }
     
-    
+    /**
+     * Recibe un arraylist y retorna el de menor valor en la lista de autos personalizados
+     * @param listaPersonalizado 
+     */
     public void hallarPersonalizadoMenor(ArrayList listaPersonalizado ){
         
             Collections.sort(listaPersonalizado, new Comparator<CarrosPersonalizado>() {
