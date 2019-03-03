@@ -9,7 +9,7 @@ package com.udec.consesionario;
  *
  * @author David
  */
-public class vendedor {
+public class VendedorConsesionario {
     
     private String nombreVendedor;
     
@@ -18,7 +18,7 @@ public class vendedor {
     private int codigoVendedor;
     
     
-     public vendedor() {
+     public VendedorConsesionario() {
     }
 
     public String getNombreVendedor() {

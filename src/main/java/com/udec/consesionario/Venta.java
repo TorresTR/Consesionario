@@ -23,7 +23,7 @@ public class Venta {
      */
     List<CarrosPrincipal> Lventa = new ArrayList<CarrosPrincipal>();
     List<Cliente> Lcliente = new ArrayList<Cliente>();
-    List<Vendedor> Lvendedor = new ArrayList<Vendedor>();
+    List<VendedorConsesionario> Lvendedor = new ArrayList<VendedorConsesionario>();
     /**
      * contructor vacio para inicializar los datos
      */
@@ -70,11 +70,11 @@ public class Venta {
         this.Lcliente = Lcliente;
     }
 
-    public List<Vendedor> getLvendedor() {
+    public List<VendedorConsesionario> getLvendedor() {
         return Lvendedor;
     }
 
-    public void setLvendedor(List<Vendedor> Lvendedor) {
+    public void setLvendedor(List<VendedorConsesionario> Lvendedor) {
         this.Lvendedor = Lvendedor;
     }
     

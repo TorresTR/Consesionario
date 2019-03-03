@@ -19,12 +19,12 @@ public class InventarioConsesionario{
      * y las lista unificada del los autos en lista inventario
      */
     ArrayList<CarrosPrincipal> listaInventario = new ArrayList<CarrosPrincipal>();
-    List<Vendedor> LvendedorInventario = new ArrayList<Vendedor>();
+    List<VendedorConsesionario> LvendedorInventario = new ArrayList<VendedorConsesionario>();
     List<Venta> LventaInventario= new ArrayList<Venta>();     
     ClasePrincipal pricipal = new ClasePrincipal();
     Cliente cl = new Cliente();
     Venta ven= new Venta();
-    Vendedor vendedor= new Vendedor();
+    VendedorConsesionario vendedor= new VendedorConsesionario();
     Factura factu = new Factura();
     Scanner scanner = new Scanner(System.in);
     Boolean bandera = false;
@@ -152,7 +152,7 @@ public class InventarioConsesionario{
         String codigoEntero= scanner.next(); 
         float valorComision=(float) 0.05;
         int contador=0;
-        for(Vendedor vende : LvendedorInventario){
+        for(VendedorConsesionario vende : LvendedorInventario){
             if(vende.getNombreVendedor().equals(codigo)){
                for(CarrosPrincipal cr : listaInventario){
                     if(contador==0){

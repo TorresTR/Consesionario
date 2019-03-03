@@ -30,7 +30,7 @@ public class ClasePrincipal {
         CarrosEstandar ce;
         CarrosMaquinaria cm;
         CarrosPersonalizado cp;
-        Vendedor ven;
+        VendedorConsesionario ven;
         Venta venta = new Venta();
         
         int contador=0;
@@ -53,19 +53,19 @@ public class ClasePrincipal {
      */
     public void autosPordefecto(){
         
-        ven=new Vendedor();
+        ven=new VendedorConsesionario();
         ven.setCodigoVendedor(1);
         ven.setNombreVendedor("arturo");
         ven.setComision(0);
         listaVendedores.add(ven);
 
-        ven=new Vendedor();
+        ven=new VendedorConsesionario();
         ven.setCodigoVendedor(2);
         ven.setNombreVendedor("julian");
         ven.setComision(0);
         listaVendedores.add(ven);
 
-        ven=new Vendedor();
+        ven=new VendedorConsesionario();
         ven.setCodigoVendedor(3);
         ven.setNombreVendedor("manuel");
         ven.setComision(0);
