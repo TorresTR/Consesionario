@@ -29,8 +29,8 @@ public class CarrosEstandar extends CarrosPrincipal {
      * @param numeroRuedas
      * @param cilindraje 
      */
-    public CarrosEstandar(String marca, int precio, String color, int numeroRuedas, int cilindraje) {
-        super(marca, precio, color, numeroRuedas, cilindraje);
+    public CarrosEstandar(String marca, float precio, String color, int numeroRuedas, int cilindraje,String placa) {
+        super(marca, precio, color, numeroRuedas, cilindraje, placa);
         consumoConbustible = 0;
         ergonomia="";
         numeroPasajaeros=0;

@@ -29,8 +29,8 @@ public class CarrosPersonalizado extends CarrosPrincipal{
      * @param numeroRuedas
      * @param cilindraje 
      */
-    public CarrosPersonalizado(String marca, int precio, String color, int numeroRuedas, int cilindraje) {
-        super(marca, precio, color, numeroRuedas, cilindraje);
+    public CarrosPersonalizado(String marca, float precio, String color, int numeroRuedas, int cilindraje, String placa) {
+        super(marca, precio, color, numeroRuedas, cilindraje, placa);
         alerones=0;
         tamañoRuedas=0;
         no2="";

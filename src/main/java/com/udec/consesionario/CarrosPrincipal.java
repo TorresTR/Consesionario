@@ -17,7 +17,7 @@ public abstract class CarrosPrincipal {
     /*
     la variable precio almacena el precio de los vehiculos
     */
-    private int precio;
+    private float precio;
     
     /*
     La variabel color guarda el color de los vehiculos
@@ -33,17 +33,12 @@ public abstract class CarrosPrincipal {
     La variabel cilindraje guarda el cilindraje de los vehiculos
     */
     private int cilindraje;
-
-    public int getIdInventario() {
-        return idInventario;
-    }
-
-    public void setIdInventario(int idInventario) {
-        this.idInventario = idInventario;
-    }
-
-    private int idInventario;
     
+    /**
+     * placa guada la placa del vehiculo
+     */
+    private String placa;
+   
     /**
      * Este constructor permite inicializar con los datos Basicos para almacenar un vehiculo
      * @param marca
@@ -52,12 +47,13 @@ public abstract class CarrosPrincipal {
      * @param numeroRuedas
      * @param cilindraje 
      */
-    public CarrosPrincipal(String marca, int precio, String color, int numeroRuedas, int cilindraje) {
+    public CarrosPrincipal(String marca, float precio, String color, int numeroRuedas, int cilindraje, String placa) {
         this.marca = marca;
         this.precio = precio;
         this.color = color;
         this.numeroRuedas = numeroRuedas;
         this.cilindraje = cilindraje;
+        this.placa = placa;
     }
 
     /**
@@ -87,7 +83,7 @@ public abstract class CarrosPrincipal {
      * getPrecio retorna el precio del vehiculo
      * @return precio
      */
-    public int getPrecio() {
+    public float getPrecio() {
         return precio;
     }
 
@@ -95,7 +91,7 @@ public abstract class CarrosPrincipal {
      * setPrecio permite asignar el  precio del vehiculo
      * @param precio 
      */
-    public void setPrecio(int precio) {
+    public void setPrecio(float precio) {
         this.precio = precio;
     }
 
@@ -145,6 +141,14 @@ public abstract class CarrosPrincipal {
      */
     public void setCilindraje(int cilindraje) {
         this.cilindraje = cilindraje;
+    }
+
+    public String getPlaca() {
+        return placa;
+    }
+
+    public void setPlaca(String placa) {
+        this.placa = placa;
     }
     
     

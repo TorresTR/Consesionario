@@ -18,6 +18,7 @@ public class ClasePrincipal {
         ArrayList listaCarrosEstandar = new ArrayList<>();
         ArrayList listaCarrosMaquinaria = new ArrayList<>();
         ArrayList listaCarrosPersonalizado = new ArrayList<>();
+        ArrayList listaVendedores = new ArrayList<>();
         /**
          * Inicializa el scanner para capturar las variables de entradas
          */
@@ -29,7 +30,8 @@ public class ClasePrincipal {
         CarrosEstandar ce;
         CarrosMaquinaria cm;
         CarrosPersonalizado cp;
-        InventarioConsesionario inv;  
+        vendedor ven;
+        Venta venta = new Venta();
         
         int contador=0;
         /**
@@ -50,134 +52,98 @@ public class ClasePrincipal {
      * esta clase insarta los autos por defecto al iniciar el programa
      */
     public void autosPordefecto(){
+        
+        ven=new vendedor();
+        ven.setCodigoVendedor(1);
+        ven.setNombreVendedor("arturo");
+        ven.setComision(0);
+        listaVendedores.add(ven);
+
+        ven=new vendedor();
+        ven.setCodigoVendedor(2);
+        ven.setNombreVendedor("julian");
+        ven.setComision(0);
+        listaVendedores.add(ven);
+
+        ven=new vendedor();
+        ven.setCodigoVendedor(3);
+        ven.setNombreVendedor("manuel");
+        ven.setComision(0);
+        listaVendedores.add(ven);
+        
         /**
          * insercion auto, personalizado
          */
-        cp= new CarrosPersonalizado("bmw",120000,"rojo",4,1200);
+        cp= new CarrosPersonalizado("bmw",120000,"rojo",4,1200,"tui789");
         cp.setAlerones(4);
         cp.setTamañoRuedas(22);
         cp.setNo2("si tiene no2");
         listaCarrosPersonalizado.add(cp);
-        inv = new InventarioConsesionario();
-        contador+=1;
-        cp= new CarrosPersonalizado("bmw",120000,"rojo",4,1200);
-        cp.setAlerones(4);
-        cp.setTamañoRuedas(22);
-        cp.setNo2("si tiene no2");
-        cp.setIdInventario(contador);
-        inv.listaInventario.add(cp);
+        
         /**
          * insercion de auto tipo maquinaria
          */
-        cm= new CarrosMaquinaria("jhonn deer",500000,"verde",16,800);
+        cm= new CarrosMaquinaria("jhonn deer",500000,"verde",16,800,"aaa111");
         cm.setPesoTon(16);
         cm.setHorugas(0);
         cm.setTipoTrabajo("camion de carga pesada");
         listaCarrosMaquinaria.add(cm);
-        contador+=1;
-        cm= new CarrosMaquinaria("jhonn deer",500000,"verde",16,800);
-        cm.setPesoTon(16);
-        cm.setHorugas(0);
-        cm.setTipoTrabajo("camion de carga pesada");
-        cm.setIdInventario(contador);
-        inv.listaInventario.add(cm);
+       
         
         /**
          * insertar auto deportivo
          */
-        cd= new CarrosDeportivo("ferrari",300000,"azul",4,200);
+        cd= new CarrosDeportivo("ferrari",300000,"azul",4,200,"fvs453");
         cd.setAceleracion(3);
         cd.setAdherenciaAsfalto(50);
         cd.setCaballosFuerza(500);
         cd.setVelocidadMaxima(450);
         listaCarrosDeportivos.add(cd);
-        contador+=1;
-        cd= new CarrosDeportivo("ferrari",300000,"azul",4,200);
-        cd.setAceleracion(3);
-        cd.setAdherenciaAsfalto(50);
-        cd.setCaballosFuerza(500);
-        cd.setVelocidadMaxima(450);
-        cd.setIdInventario(contador);
-        inv.listaInventario.add(cd);
+        
         /**
          * insertar autos estandar
          */
-        ce= new CarrosEstandar("toyota",50000,"gris",4,500);
+        ce= new CarrosEstandar("toyota",50000,"gris",4,500,"gr453");
         ce.setConsumoConbustible(19);
         ce.setErgonomia("consumo de ocnbustible bajo y ergonomico");
         ce.setNumeroPasajaeros(6);
         listaCarrosEstandar.add(ce);
-        contador+=1;
-        ce= new CarrosEstandar("toyota",50000,"gris",4,500);
-        ce.setConsumoConbustible(19);
-        ce.setErgonomia("consumo de ocnbustible bajo y ergonomico");
-        ce.setNumeroPasajaeros(6);
-        ce.setIdInventario(contador);
-        inv.listaInventario.add(ce);
+       
          /**
          * insercion auto, personalizado
          */
-        cp= new CarrosPersonalizado("subaru",140000,"rojo",2,120);
+        cp= new CarrosPersonalizado("subaru",140000,"rojo",2,120,"tyr773");
         cp.setAlerones(2);
         cp.setTamañoRuedas(12);
         cp.setNo2("no tiene no2");
         listaCarrosPersonalizado.add(cp);
-        contador+=1;
-        cp= new CarrosPersonalizado("subaru",140000,"rojo",2,120);
-        cp.setAlerones(2);
-        cp.setTamañoRuedas(12);
-        cp.setNo2("no tiene no2");
-        cp.setIdInventario(contador);
-        inv.listaInventario.add(cp);
-        
+         
         /**
          * insercion de auto tipo maquinaria
          */
-        cm= new CarrosMaquinaria("Ford",6000,"negro",16,80);
+        cm= new CarrosMaquinaria("Ford",6000,"negro",16,80,"rey658");
         cm.setPesoTon(13);
         cm.setHorugas(2);
         cm.setTipoTrabajo("retroescavadora");
         listaCarrosMaquinaria.add(cm);
-        contador+=1;
-        cm= new CarrosMaquinaria("Ford",6000,"negro",16,80);
-        cm.setPesoTon(13);
-        cm.setHorugas(2);
-        cm.setTipoTrabajo("retroescavadora");
-        cm.setIdInventario(contador);
-        inv.listaInventario.add(cm);
         /**
          * insertar auto deportivo
          */
-        cd= new CarrosDeportivo("maserrati",30000,"amarillo",4,20);
+        cd= new CarrosDeportivo("maserrati",30000,"amarillo",4,20,"saf780");
         cd.setAceleracion(34);
         cd.setAdherenciaAsfalto(10);
         cd.setCaballosFuerza(200);
         cd.setVelocidadMaxima(650);
         listaCarrosDeportivos.add(cd);
-         contador+=1;
-        cd= new CarrosDeportivo("maserrati",30000,"amarillo",4,20);
-        cd.setAceleracion(34);
-        cd.setAdherenciaAsfalto(10);
-        cd.setCaballosFuerza(200);
-        cd.setVelocidadMaxima(650);
-        cd.setIdInventario(contador);
-        inv.listaInventario.add(cd);
         
         /**
          * insertar autos estandar
          */
-        ce= new CarrosEstandar("mazda",2000,"gris",4,20);
+        ce= new CarrosEstandar("mazda",2000,"gris",4,20,"vbn456");
         ce.setConsumoConbustible(2);
         ce.setErgonomia("solo ergonomico");
         ce.setNumeroPasajaeros(3);
         listaCarrosEstandar.add(ce);
-        contador+=1;
-        ce= new CarrosEstandar("mazda",2000,"gris",4,20);
-        ce.setConsumoConbustible(2);
-        ce.setErgonomia("solo ergonomico");
-        ce.setNumeroPasajaeros(3);
-        ce.setIdInventario(contador);
-        inv.listaInventario.add(ce);
         menu();
     }
     
@@ -190,9 +156,7 @@ public class ClasePrincipal {
             System.out.println ("1.Insertar autos");
             System.out.println ("2.Insertar empleados");
             System.out.println ("3.vender autos");
-            System.out.println ("4.vehiculo Mas Caro");
-            System.out.println ("5.vehiculo Mas barato ");
-            System.out.println ("6.ver inventario ");
+            System.out.println ("4.inventario ");
             String variableControl = scanner.nextLine();
             int variableSeleccion=Integer.parseInt(variableControl);
             
@@ -202,26 +166,19 @@ public class ClasePrincipal {
                 
             }else if(variableSeleccion==3){
                 
-            }else if (variableSeleccion == 4){
+            }else if (variableSeleccion == 4){                
                 InventarioConsesionario inventarioC = new InventarioConsesionario();
                 if(listaCarrosDeportivos != null && listaCarrosEstandar !=null && listaCarrosMaquinaria !=null && listaCarrosPersonalizado !=null){
-                    inventarioC.masCaro(listaCarrosDeportivos, listaCarrosEstandar, listaCarrosMaquinaria, listaCarrosPersonalizado);
+                    inventarioC.listaInventario.addAll(listaCarrosDeportivos);
+                    inventarioC.listaInventario.addAll(listaCarrosEstandar);
+                    inventarioC.listaInventario.addAll(listaCarrosMaquinaria);
+                    inventarioC.listaInventario.addAll(listaCarrosPersonalizado);
+                    inventarioC.Lvendedor.addAll(listaVendedores);
+                    inventarioC.unificar();
                 }else{
                     System.out.println ("no hay datos de vehiculos inserve uno valido");
                     menu();
                 } 
-            }else if (variableSeleccion == 5){
-                InventarioConsesionario inventarioC = new InventarioConsesionario();
-                if(listaCarrosDeportivos != null && listaCarrosEstandar !=null && listaCarrosMaquinaria !=null && listaCarrosPersonalizado !=null){
-                    inventarioC.masBarato(listaCarrosDeportivos, listaCarrosEstandar, listaCarrosMaquinaria, listaCarrosPersonalizado);
-                }else{
-                    System.out.println ("no hay datos de vehiculos inserve uno valido");
-                    menu();
-                } 
-            }else if(variableSeleccion == 6){
-                InventarioConsesionario inventarioC = new InventarioConsesionario();
-                //inventarioC.listadoInventario(listaCarrosDeportivos, listaCarrosEstandar, listaCarrosMaquinaria, listaCarrosPersonalizado);
-                
             }else{
                 System.out.println ("Inserte una opcion valida");
                 menu();
@@ -270,9 +227,11 @@ public class ClasePrincipal {
         //Pedimos los datos de los vehiculos deportivos
         System.out.print("Ingresa La marca del vehiculo: ");
         String marcaVehiculo = scanner.nextLine();
+        System.out.print("Ingresa La placa del vehiculo: ");
+        String placa = scanner.nextLine();
         System.out.print("Ingresa el precio del vehiculo: ");
         String precioVehiculo = scanner.nextLine();
-        int pv=Integer.parseInt(precioVehiculo);
+        float pv=Integer.parseInt(precioVehiculo);
         System.out.print("Ingresa el color del vehiculo: ");
         String colorVehiculo = scanner.nextLine();
         System.out.print("Ingresa el numero de ruedas del vehiculo: ");
@@ -293,7 +252,7 @@ public class ClasePrincipal {
         System.out.print("Ingresa los caballos de fuerza del vehiculo: ");
         String caballosFuerza = scanner.nextLine();
         int cf=Integer.parseInt(caballosFuerza);
-        insertarDeportivo(marcaVehiculo, pv, colorVehiculo, nr, cv, av, aA, cf, vm);
+        insertarDeportivo(marcaVehiculo, pv, colorVehiculo, nr, cv, av, aA, cf, vm, placa);
     }//captura los datos de los autos deportivos
     
     /**
@@ -308,21 +267,13 @@ public class ClasePrincipal {
      * @param cf
      * @param vm 
      */
-    public void insertarDeportivo(String marcaVehiculo,int pv,String colorVehiculo,int nr,int cv, int av,int aA,int cf,int vm){
-        cd= new CarrosDeportivo(marcaVehiculo,pv,colorVehiculo,nr,cv);
+    public void insertarDeportivo(String marcaVehiculo,float pv,String colorVehiculo,int nr,int cv, int av,int aA,int cf,int vm,String placa){
+        cd= new CarrosDeportivo(marcaVehiculo,pv,colorVehiculo,nr,cv, placa);
         cd.setAceleracion(av);
         cd.setAdherenciaAsfalto(aA);
         cd.setCaballosFuerza(cf);
         cd.setVelocidadMaxima(vm);
         listaCarrosDeportivos.add(cd);
-        cd= new CarrosDeportivo(marcaVehiculo,pv,colorVehiculo,nr,cv);
-        contador+=1;
-        cd.setAceleracion(av);
-        cd.setAdherenciaAsfalto(aA);
-        cd.setCaballosFuerza(cf);
-        cd.setVelocidadMaxima(vm);
-        cd.setIdInventario(contador);
-        inv.listaInventario.add(cd);
         
         menuInsertar();
     }
@@ -334,9 +285,11 @@ public class ClasePrincipal {
         //Pedimos los datos de los vehiculos deportivos
         System.out.print("Ingresa La marca del vehiculo: ");
         String marcaVehiculo = scanner.nextLine();
+        System.out.print("Ingresa La placa del vehiculo: ");
+        String placa = scanner.nextLine();
         System.out.print("Ingresa el precio del vehiculo: ");
         String precioVehiculo = scanner.nextLine();
-        int pv=Integer.parseInt(precioVehiculo);
+        float pv=Integer.parseInt(precioVehiculo);
         System.out.print("Ingresa el color del vehiculo: ");
         String colorVehiculo = scanner.nextLine();
         System.out.print("Ingresa el numero de ruedas del vehiculo: ");
@@ -353,7 +306,7 @@ public class ClasePrincipal {
         System.out.print("Ingresa el numero de pasajeros del vehiculo: ");
         String numeroPasajeros = scanner.nextLine();
         int np=Integer.parseInt(numeroPasajeros);
-        insertarEstandar(marcaVehiculo, pv, colorVehiculo, nr, cv, cvc, ergonomia, np);
+        insertarEstandar(marcaVehiculo, pv, colorVehiculo, nr, cv, cvc, ergonomia, np, placa);
     }
     
     /**
@@ -367,20 +320,13 @@ public class ClasePrincipal {
      * @param ergonomia
      * @param np 
      */
-    public void insertarEstandar(String marcaVehiculo,int pv,String colorVehiculo,int nr,int cv, int cvc,String ergonomia,int np){
-        ce= new CarrosEstandar(marcaVehiculo,pv,colorVehiculo,nr,cv);
+    public void insertarEstandar(String marcaVehiculo,float pv,String colorVehiculo,int nr,int cv, int cvc,String ergonomia,int np,String placa){
+        ce= new CarrosEstandar(marcaVehiculo,pv,colorVehiculo,nr,cv,placa);
         ce.setConsumoConbustible(cvc);
         ce.setErgonomia(ergonomia);
         ce.setNumeroPasajaeros(np);
         listaCarrosEstandar.add(ce);
-        contador+=1;
-        ce= new CarrosEstandar(marcaVehiculo,pv,colorVehiculo,nr,cv);
-        ce.setConsumoConbustible(cvc);
-        ce.setErgonomia(ergonomia);
-        ce.setNumeroPasajaeros(np);
-        ce.setIdInventario(contador);
-        inv.listaInventario.add(ce);
-        menuInsertar();
+       menuInsertar();
     }
     
     
@@ -391,9 +337,11 @@ public class ClasePrincipal {
         //Pedimos los datos de los vehiculos deportivos
         System.out.print("Ingresa La marca del vehiculo: ");
         String marcaVehiculo = scanner.nextLine();
+        System.out.print("Ingresa La placa del vehiculo: ");
+        String placa = scanner.nextLine();
         System.out.print("Ingresa el precio del vehiculo: ");
         String precioVehiculo = scanner.nextLine();
-        int pv=Integer.parseInt(precioVehiculo);
+        float pv=Integer.parseInt(precioVehiculo);
         System.out.print("Ingresa el color del vehiculo: ");
         String colorVehiculo = scanner.nextLine();
         System.out.print("Ingresa el numero de ruedas del vehiculo: ");
@@ -410,7 +358,7 @@ public class ClasePrincipal {
         int  horu=Integer.parseInt(horugas);
         System.out.print("Ingresa tipo de carga o de trabajo del vehiculo: ");
         String tipoTrabajo = scanner.nextLine();
-        insertarMaquinaria(marcaVehiculo, pv, colorVehiculo, nr, cv, pvton, horu, tipoTrabajo);
+        insertarMaquinaria(marcaVehiculo, pv, colorVehiculo, nr, cv, pvton, horu, tipoTrabajo,placa);
     }
     
     /**
@@ -424,19 +372,12 @@ public class ClasePrincipal {
      * @param horu
      * @param tipoTrabajo 
      */
-    public void insertarMaquinaria(String marcaVehiculo,int pv,String colorVehiculo,int nr,int cv, int pvton,int horu,String tipoTrabajo){
-        cm= new CarrosMaquinaria(marcaVehiculo,pv,colorVehiculo,nr,cv);
+    public void insertarMaquinaria(String marcaVehiculo,float pv,String colorVehiculo,int nr,int cv, int pvton,int horu,String tipoTrabajo,String placa){
+        cm= new CarrosMaquinaria(marcaVehiculo,pv,colorVehiculo,nr,cv,placa);
         cm.setPesoTon(pvton);
         cm.setHorugas(horu);
         cm.setTipoTrabajo(tipoTrabajo);
         listaCarrosMaquinaria.add(cm);
-        contador+=1;
-        cm= new CarrosMaquinaria(marcaVehiculo,pv,colorVehiculo,nr,cv);
-        cm.setPesoTon(pvton);
-        cm.setHorugas(horu);
-        cm.setTipoTrabajo(tipoTrabajo);
-        cm.setIdInventario(contador);
-        inv.listaInventario.add(cm);
         menuInsertar();
     }
     
@@ -448,9 +389,11 @@ public class ClasePrincipal {
         //Pedimos los datos de los vehiculos deportivos
         System.out.print("Ingresa La marca del vehiculo: ");
         String marcaVehiculo = scanner.nextLine();
+        System.out.print("Ingresa La placa del vehiculo: ");
+        String placa = scanner.nextLine();
         System.out.print("Ingresa el precio del vehiculo: ");
         String precioVehiculo = scanner.nextLine();
-        int pv=Integer.parseInt(precioVehiculo);
+        float pv=Integer.parseInt(precioVehiculo);
         System.out.print("Ingresa el color del vehiculo: ");
         String colorVehiculo = scanner.nextLine();
         System.out.print("Ingresa el numero de ruedas del vehiculo: ");
@@ -467,7 +410,7 @@ public class ClasePrincipal {
         int  tr=Integer.parseInt(tamañoRuedas);
         System.out.print("Ingresa NO2 en el  vehiculo: ");
         String no2 = scanner.nextLine();
-        insertarPersonalizado(marcaVehiculo, pv, colorVehiculo, nr, cv, av, tr, no2);
+        insertarPersonalizado(marcaVehiculo, pv, colorVehiculo, nr, cv, av, tr, no2, placa);
     }
     
     /**
@@ -481,19 +424,12 @@ public class ClasePrincipal {
      * @param tr
      * @param no2 
      */
-    public void insertarPersonalizado(String marcaVehiculo,int pv,String colorVehiculo,int nr,int cv, int av,int tr,String no2){
-        cp= new CarrosPersonalizado(marcaVehiculo,pv,colorVehiculo,nr,cv);
+    public void insertarPersonalizado(String marcaVehiculo,float pv,String colorVehiculo,int nr,int cv, int av,int tr,String no2, String placa){
+        cp= new CarrosPersonalizado(marcaVehiculo,pv,colorVehiculo,nr,cv,placa);
         cp.setAlerones(av);
         cp.setTamañoRuedas(tr);
         cp.setNo2(no2);
         listaCarrosPersonalizado.add(cp);
-        contador+=1;
-        cp= new CarrosPersonalizado(marcaVehiculo,pv,colorVehiculo,nr,cv);
-        cp.setAlerones(av);
-        cp.setTamañoRuedas(tr);
-        cp.setNo2(no2);
-        cp.setIdInventario(contador);
-        inv.listaInventario.add(cp);
         menuInsertar();
     }
     

@@ -34,8 +34,8 @@ public class CarrosDeportivo extends CarrosPrincipal{
      * @param numeroRuedas
      * @param cilindraje 
      */
-    public CarrosDeportivo(String marca, int precio, String color, int numeroRuedas, int cilindraje) {
-        super(marca, precio, color, numeroRuedas, cilindraje);
+    public CarrosDeportivo(String marca, float precio, String color, int numeroRuedas, int cilindraje, String placa) {
+        super(marca, precio, color, numeroRuedas, cilindraje, placa);
         aceleracion=0;
         velocidadMaxima=0;
         adherenciaAsfalto=0;

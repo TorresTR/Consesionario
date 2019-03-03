@@ -32,8 +32,8 @@ public class CarrosMaquinaria extends CarrosPrincipal {
      * @param numeroRuedas
      * @param cilindraje 
      */
-    public CarrosMaquinaria(String marca, int precio, String color, int numeroRuedas, int cilindraje) {
-        super(marca, precio, color, numeroRuedas, cilindraje);
+    public CarrosMaquinaria(String marca, float precio, String color, int numeroRuedas, int cilindraje, String placa) {
+        super(marca, precio, color, numeroRuedas, cilindraje, placa);
         pesoTon=0;
         horugas=0;
         tipoTrabajo="";
