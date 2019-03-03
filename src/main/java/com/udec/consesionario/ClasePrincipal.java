@@ -159,7 +159,7 @@ public class ClasePrincipal {
             if(variableSeleccion==1){
                 menuInsertar();
             }else if(variableSeleccion==2){
-                
+                Vendores();
             }else if (variableSeleccion == 3){                
                 InventarioConsesionario inventarioC = new InventarioConsesionario();
                 if(listaCarrosDeportivos != null && listaCarrosEstandar !=null && listaCarrosMaquinaria !=null && listaCarrosPersonalizado !=null){
@@ -213,6 +213,25 @@ public class ClasePrincipal {
                 break;
             }
         }//menu de captura de datos (insercion) 
+    
+    /**
+     * insercion de un nuevo vendedor 
+     */
+    public void Vendores(){
+        //Pedimos los datos de los vehiculos deportivos
+        System.out.print("Ingresa nombre del vendedor: ");
+        String nombreVendedor = scanner.nextLine();
+        System.out.print("Ingresa el codigo del vendedor: ");
+        int codvendedor = scanner.nextInt();
+        System.out.print("Ingresa la comision del vendedor: ");
+        float comi = scanner.nextFloat();
+        ven=new VendedorConsesionario();
+        ven.setCodigoVendedor(codvendedor);
+        ven.setNombreVendedor(nombreVendedor);
+        ven.setComision(comi);
+        listaVendedores.add(ven);  
+    }
+    
     
     /**
      * se capturan los datos de los vehiculos deportivos para poder añadirse en la lista
