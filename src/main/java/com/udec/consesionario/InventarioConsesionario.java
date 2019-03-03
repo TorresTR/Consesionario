@@ -26,8 +26,10 @@ public class InventarioConsesionario{
     Venta ven= new Venta();
     VendedorConsesionario vendedor= new VendedorConsesionario();
     Factura factu = new Factura();
+    ListaFactura Lfactu = new ListaFactura();
     Scanner scanner = new Scanner(System.in);
     Boolean bandera = false;
+    String codigoVentaEnvio;
     
     /**
      * este es el constructo vacio para pocer intaciar los metodos de la clase
@@ -47,6 +49,7 @@ public class InventarioConsesionario{
         System.out.println ("4. vender");
         System.out.println ("5. Facturacion");
         System.out.println ("6. Regresar menu");
+        System.out.println ("---------------------------------------------------------");
         int variableControl = scanner.nextInt();         
             if(variableControl==1){
                 impresionUnificacion();
@@ -150,6 +153,7 @@ public class InventarioConsesionario{
         String codigo= scanner.next();   
         System.out.println("ingrese el Codigo  de la venta: ");
         String codigoEntero= scanner.next(); 
+        codigoVentaEnvio = codigoEntero;
         float valorComision=(float) 0.05;
         int contador=0;
         for(VendedorConsesionario vende : LvendedorInventario){
@@ -200,7 +204,7 @@ public class InventarioConsesionario{
                         float val = ven.Lvendedor.get(indexVendedor).getComision();
                         comision=(comision*valorComision)+val;
                         LventaInventario.get(valorIndex).Lvendedor.get(indexVendedor).setComision(comision);
-                        seguirVentas(codigo, vendedor, valorComision);
+                        confirmarSeguir(codigo, vendedor, valorComision);
                     }else if(caracter.equals("n")){
                         unificar();
                     }
@@ -208,6 +212,8 @@ public class InventarioConsesionario{
          }
          
     }
+    
+    
     
     /**
      * Metodo para hacer que el programa quede cilcico
@@ -221,18 +227,23 @@ public class InventarioConsesionario{
         if(ventas.equals("s")){
         seguirVentas( codigo, vendedor, valorComision);
         }else if(ventas.equals("n")){
+            bandera=true;
             unificar();
         }    
     
     }
     
+    /**
+     * Este menu se encarga de dar las opciones para generar la factura, ver el mas vendido y el menos vendido
+     */
     public void menuFacturaYVendedor(){
         System.out.println ("<--------------Seleccione una opcion de factura: ------------------>");
         System.out.println ("1. Generar Factura");
-        System.out.println ("2. ver mas vendido");
-        System.out.println ("3. ver menos vendido");
-        int variableControl = scanner.nextInt();         
+        System.out.println ("2. Volver");
+        int variableControl = scanner.nextInt();
+        
             if(variableControl==1){
+                
                 if(bandera == true){
                     factu.generarFactura(LventaInventario);
                 }else{
@@ -240,9 +251,7 @@ public class InventarioConsesionario{
                     unificar();
                 }
             }else if(variableControl==2){
-                masCaro();
-            }else if(variableControl==3){
-                    masBarato();
+                    unificar();
             }
         
     }

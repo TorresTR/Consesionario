@@ -24,7 +24,7 @@ public class ClasePrincipal {
          */
         Scanner scanner = new Scanner(System.in);
         /**
-         * instanciamos las calses hijas
+         * instanciamos las calses hijas y algunas clases que necesitamos al igual que un contador
          */
         CarrosDeportivo cd;
         CarrosEstandar ce;
@@ -32,7 +32,6 @@ public class ClasePrincipal {
         CarrosPersonalizado cp;
         VendedorConsesionario ven;
         Venta venta = new Venta();
-        
         int contador=0;
         /**
          * se llamada a la clase inventario
@@ -74,7 +73,7 @@ public class ClasePrincipal {
         /**
          * insercion auto, personalizado
          */
-        cp= new CarrosPersonalizado("bmw",120000,"rojo",4,1200,"tui789");
+        cp= new CarrosPersonalizado("jhonn deer",120000,"rojo",4,1200,"tui789");
         cp.setAlerones(4);
         cp.setTamañoRuedas(22);
         cp.setNo2("si tiene no2");
@@ -151,14 +150,12 @@ public class ClasePrincipal {
      * menu para moverse por el programa 
      */
     public  void menu(){
-            System.out.println ("Bienvenido al meno del Consesionario:");
+            System.out.println ("------------Bienvenido al meno del Consesionario: --------------");
             System.out.println ("Seleccione una opcion");
             System.out.println ("1.Insertar autos");
             System.out.println ("2.Insertar empleados");
             System.out.println ("3.Inventario");
-            String variableControl = scanner.nextLine();
-            int variableSeleccion=Integer.parseInt(variableControl);
-            
+            int variableSeleccion = scanner.nextInt();
             if(variableSeleccion==1){
                 menuInsertar();
             }else if(variableSeleccion==2){
@@ -186,14 +183,14 @@ public class ClasePrincipal {
      * menu que manjea la insercion de autos 
      */
     public  void menuInsertar(){
-        System.out.println ("Seleccione el auto quiere insertar");
+        System.out.println ("-----------Seleccione el auto quiere insertar--------------");
         System.out.println ("1. Autos Deportivos");
         System.out.println ("2. Autos Estandar");
         System.out.println ("3. Maquinarias");
         System.out.println ("4. Autos Personalizados");
         System.out.println ("5. Volver la menu");
-        String variableControl = scanner.nextLine();
-        int variableSeleccion=Integer.parseInt(variableControl);
+        System.out.println ("-----------------------------------------------------------");
+        int variableSeleccion = scanner.nextInt();
         switch (variableSeleccion) {
             case 1:
                 capturaDeportivos();
@@ -227,28 +224,21 @@ public class ClasePrincipal {
         System.out.print("Ingresa La placa del vehiculo: ");
         String placa = scanner.nextLine();
         System.out.print("Ingresa el precio del vehiculo: ");
-        String precioVehiculo = scanner.nextLine();
-        float pv=Integer.parseInt(precioVehiculo);
+        float pv = scanner.nextFloat();
         System.out.print("Ingresa el color del vehiculo: ");
         String colorVehiculo = scanner.nextLine();
         System.out.print("Ingresa el numero de ruedas del vehiculo: ");
-        String numeroRuedas = scanner.nextLine();
-        int nr=Integer.parseInt(numeroRuedas);
+        int nr = scanner.nextInt();
         System.out.print("Ingresa el cilindraje del vehiculo: ");
-        String cilindrajeVehiculo = scanner.nextLine();
-        int cv=Integer.parseInt(cilindrajeVehiculo);
+        int cv = scanner.nextInt();
         System.out.print("Ingresa la  aceleracion del vehiculo: ");
-        String aceleracionVehiculo = scanner.nextLine();
-        int av=Integer.parseInt(aceleracionVehiculo);
+        int av = scanner.nextInt();
         System.out.print("Ingresa la  velocidad maxima del vehiculo: ");
-        String velocidadMaxima = scanner.nextLine();
-        int vm=Integer.parseInt(velocidadMaxima);
+        int vm = scanner.nextInt();
         System.out.print("Ingresa la  adherencia al asfalto del vehiculo: ");
-        String adherenciaAsfalto = scanner.nextLine();
-        int aA=Integer.parseInt(adherenciaAsfalto);
+        int aA = scanner.nextInt();
         System.out.print("Ingresa los caballos de fuerza del vehiculo: ");
-        String caballosFuerza = scanner.nextLine();
-        int cf=Integer.parseInt(caballosFuerza);
+        int cf = scanner.nextInt();
         insertarDeportivo(marcaVehiculo, pv, colorVehiculo, nr, cv, av, aA, cf, vm, placa);
     }//captura los datos de los autos deportivos
     
@@ -285,24 +275,19 @@ public class ClasePrincipal {
         System.out.print("Ingresa La placa del vehiculo: ");
         String placa = scanner.nextLine();
         System.out.print("Ingresa el precio del vehiculo: ");
-        String precioVehiculo = scanner.nextLine();
-        float pv=Integer.parseInt(precioVehiculo);
+        float pv = scanner.nextFloat();
         System.out.print("Ingresa el color del vehiculo: ");
         String colorVehiculo = scanner.nextLine();
         System.out.print("Ingresa el numero de ruedas del vehiculo: ");
-        String numeroRuedas = scanner.nextLine();
-        int nr=Integer.parseInt(numeroRuedas);
+        int nr = scanner.nextInt();
         System.out.print("Ingresa el cilindraje del vehiculo: ");
-        String cilindrajeVehiculo = scanner.nextLine();
-        int cv=Integer.parseInt(cilindrajeVehiculo);
+        int cv = scanner.nextInt();
         System.out.print("Ingresa el consumo de conbustible del vehiculo: ");
-        String consumoVehiculo = scanner.nextLine();
-        int cvc=Integer.parseInt(consumoVehiculo);
+        int cvc = scanner.nextInt();
         System.out.print("Ingresa la  ergonomia  del vehiculo: ");
         String ergonomia = scanner.nextLine();
         System.out.print("Ingresa el numero de pasajeros del vehiculo: ");
-        String numeroPasajeros = scanner.nextLine();
-        int np=Integer.parseInt(numeroPasajeros);
+        int np = scanner.nextInt();
         insertarEstandar(marcaVehiculo, pv, colorVehiculo, nr, cv, cvc, ergonomia, np, placa);
     }
     
@@ -337,22 +322,17 @@ public class ClasePrincipal {
         System.out.print("Ingresa La placa del vehiculo: ");
         String placa = scanner.nextLine();
         System.out.print("Ingresa el precio del vehiculo: ");
-        String precioVehiculo = scanner.nextLine();
-        float pv=Integer.parseInt(precioVehiculo);
+        float pv = scanner.nextFloat();
         System.out.print("Ingresa el color del vehiculo: ");
         String colorVehiculo = scanner.nextLine();
         System.out.print("Ingresa el numero de ruedas del vehiculo: ");
-        String numeroRuedas = scanner.nextLine();
-        int nr=Integer.parseInt(numeroRuedas);
+        int nr = scanner.nextInt();
         System.out.print("Ingresa el cilindraje del vehiculo: ");
-        String cilindrajeVehiculo = scanner.nextLine();
-        int cv=Integer.parseInt(cilindrajeVehiculo);
+        int cv = scanner.nextInt();
         System.out.print("Ingresa el peso del vehiculo en[TONELADAS]: ");
-        String pesoVehiculo = scanner.nextLine();
-        int pvton=Integer.parseInt(pesoVehiculo);
+        int pvton = scanner.nextInt();
         System.out.print("Ingresa las horugas del vehiculo: ");
-        String horugas = scanner.nextLine();
-        int  horu=Integer.parseInt(horugas);
+        int horu = scanner.nextInt();
         System.out.print("Ingresa tipo de carga o de trabajo del vehiculo: ");
         String tipoTrabajo = scanner.nextLine();
         insertarMaquinaria(marcaVehiculo, pv, colorVehiculo, nr, cv, pvton, horu, tipoTrabajo,placa);
@@ -389,22 +369,17 @@ public class ClasePrincipal {
         System.out.print("Ingresa La placa del vehiculo: ");
         String placa = scanner.nextLine();
         System.out.print("Ingresa el precio del vehiculo: ");
-        String precioVehiculo = scanner.nextLine();
-        float pv=Integer.parseInt(precioVehiculo);
+        float pv = scanner.nextFloat();
         System.out.print("Ingresa el color del vehiculo: ");
         String colorVehiculo = scanner.nextLine();
         System.out.print("Ingresa el numero de ruedas del vehiculo: ");
-        String numeroRuedas = scanner.nextLine();
-        int nr=Integer.parseInt(numeroRuedas);
+        int nr = scanner.nextInt();
         System.out.print("Ingresa el cilindraje del vehiculo: ");
-        String cilindrajeVehiculo = scanner.nextLine();
-        int cv=Integer.parseInt(cilindrajeVehiculo);
+        int cv = scanner.nextInt();
         System.out.print("Ingresa el numero de alerones del vehiculo: ");
-        String aleronesVehiculos = scanner.nextLine();
-        int av=Integer.parseInt(aleronesVehiculos);
+        int av = scanner.nextInt();
         System.out.print("Ingresa Tamaño de las ruedas  del vehiculo: ");
-        String tamañoRuedas = scanner.nextLine();
-        int  tr=Integer.parseInt(tamañoRuedas);
+        int tr = scanner.nextInt();
         System.out.print("Ingresa NO2 en el  vehiculo: ");
         String no2 = scanner.nextLine();
         insertarPersonalizado(marcaVehiculo, pv, colorVehiculo, nr, cv, av, tr, no2, placa);
