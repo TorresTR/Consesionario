@@ -155,8 +155,7 @@ public class ClasePrincipal {
             System.out.println ("Seleccione una opcion");
             System.out.println ("1.Insertar autos");
             System.out.println ("2.Insertar empleados");
-            System.out.println ("3.vender autos");
-            System.out.println ("4.inventario ");
+            System.out.println ("3.Inventario");
             String variableControl = scanner.nextLine();
             int variableSeleccion=Integer.parseInt(variableControl);
             
@@ -164,9 +163,7 @@ public class ClasePrincipal {
                 menuInsertar();
             }else if(variableSeleccion==2){
                 
-            }else if(variableSeleccion==3){
-                
-            }else if (variableSeleccion == 4){                
+            }else if (variableSeleccion == 3){                
                 InventarioConsesionario inventarioC = new InventarioConsesionario();
                 if(listaCarrosDeportivos != null && listaCarrosEstandar !=null && listaCarrosMaquinaria !=null && listaCarrosPersonalizado !=null){
                     inventarioC.listaInventario.addAll(listaCarrosDeportivos);

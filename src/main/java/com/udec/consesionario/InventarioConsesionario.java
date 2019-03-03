@@ -19,14 +19,15 @@ public class InventarioConsesionario{
      * y las lista unificada del los autos en lista inventario
      */
     ArrayList<CarrosPrincipal> listaInventario = new ArrayList<CarrosPrincipal>();
-     List<Vendedor> LvendedorInventario = new ArrayList<Vendedor>();
-     List<Venta> LventaInventario= new ArrayList<Venta>();     
+    List<Vendedor> LvendedorInventario = new ArrayList<Vendedor>();
+    List<Venta> LventaInventario= new ArrayList<Venta>();     
     ClasePrincipal pricipal = new ClasePrincipal();
     Cliente cl = new Cliente();
     Venta ven= new Venta();
     Vendedor vendedor= new Vendedor();
+    Factura factu = new Factura();
     Scanner scanner = new Scanner(System.in);
-    
+    Boolean bandera = false;
     
     /**
      * este es el constructo vacio para pocer intaciar los metodos de la clase
@@ -39,12 +40,13 @@ public class InventarioConsesionario{
      * 
      */
     public void unificar(){   
-        System.out.println ("Seleccione el auto quiere insertar");
+        System.out.println ("<--------------Seleccione una opcion: ------------------>");
         System.out.println ("1. Ver inventario");
         System.out.println ("2. ver mas caro");
         System.out.println ("3. ver mas Barato");
         System.out.println ("4. vender");
-        System.out.println ("5. Regresar menu");
+        System.out.println ("5. Facturacion");
+        System.out.println ("6. Regresar menu");
         int variableControl = scanner.nextInt();         
             if(variableControl==1){
                 impresionUnificacion();
@@ -55,9 +57,11 @@ public class InventarioConsesionario{
             }else if(variableControl==4){
                    vender();
             }else if(variableControl==5){
+                menuFacturaYVendedor();
+            }else if(variableControl==6){
                 ClasePrincipal cl = new ClasePrincipal();
                 cl.menu();
-            }  
+            }   
     }
     
     /**
@@ -131,6 +135,7 @@ public class InventarioConsesionario{
                     ven.Lcliente.add(cl);
                     vendorVehiculo();
                 }else if(caracter.equals("n")){
+                    bandera=true;
                     unificar();
                 }
             }
@@ -168,6 +173,7 @@ public class InventarioConsesionario{
         if(ventas.equals("s")){
             seguirVentas(codigoEntero,codigo,valorComision);
         }else if(ventas.equals("n")){
+            bandera=true;
             unificar();
         }     
     }
@@ -218,6 +224,27 @@ public class InventarioConsesionario{
             unificar();
         }    
     
+    }
+    
+    public void menuFacturaYVendedor(){
+        System.out.println ("<--------------Seleccione una opcion de factura: ------------------>");
+        System.out.println ("1. Generar Factura");
+        System.out.println ("2. ver mas vendido");
+        System.out.println ("3. ver menos vendido");
+        int variableControl = scanner.nextInt();         
+            if(variableControl==1){
+                if(bandera == true){
+                    factu.generarFactura(LventaInventario);
+                }else{
+                    System.out.println ("no hay datos para facturar");
+                    unificar();
+                }
+            }else if(variableControl==2){
+                masCaro();
+            }else if(variableControl==3){
+                    masBarato();
+            }
+        
     }
     
     /**
