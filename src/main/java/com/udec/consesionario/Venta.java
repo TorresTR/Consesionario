@@ -16,14 +16,14 @@ public class Venta {
     /**
      * codigoVenta guarda el codigo de las ventas
      */
-    private int codigoVenta;
+    private String codigoVenta;
     /**
      * Lventa es la lista que guadara los datos de las ventas
      * Lcliente es un alista que alamacena los datos del cliente
      */
     List<CarrosPrincipal> Lventa = new ArrayList<CarrosPrincipal>();
     List<Cliente> Lcliente = new ArrayList<Cliente>();
-    List<vendedor> Lvendedor = new ArrayList<vendedor>();
+    List<Vendedor> Lvendedor = new ArrayList<Vendedor>();
     /**
      * contructor vacio para inicializar los datos
      */
@@ -34,7 +34,7 @@ public class Venta {
      * Retorna el codigo de venta
      * @return codigoVenta
      */
-    public int getCodigoVenta() {
+    public String getCodigoVenta() {
         return codigoVenta;
     }
 
@@ -42,7 +42,7 @@ public class Venta {
      * Asigana el valor de codigo de venta
      * @param codigoVenta 
      */
-    public void setCodigoVenta(int codigoVenta) {
+    public void setCodigoVenta(String codigoVenta) {
         this.codigoVenta = codigoVenta;
     }
 
@@ -70,11 +70,11 @@ public class Venta {
         this.Lcliente = Lcliente;
     }
 
-    public List<vendedor> getLvendedor() {
+    public List<Vendedor> getLvendedor() {
         return Lvendedor;
     }
 
-    public void setLvendedor(List<vendedor> Lvendedor) {
+    public void setLvendedor(List<Vendedor> Lvendedor) {
         this.Lvendedor = Lvendedor;
     }
     

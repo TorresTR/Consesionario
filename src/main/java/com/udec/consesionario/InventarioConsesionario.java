@@ -3,7 +3,7 @@ package com.udec.consesionario;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import sun.security.krb5.internal.ktab.KeyTabConstants;
+
 
 
 
@@ -19,11 +19,12 @@ public class InventarioConsesionario{
      * y las lista unificada del los autos en lista inventario
      */
     ArrayList<CarrosPrincipal> listaInventario = new ArrayList<CarrosPrincipal>();
-     List<vendedor> Lvendedor = new ArrayList<vendedor>();
+     List<Vendedor> LvendedorInventario = new ArrayList<Vendedor>();
+     List<Venta> LventaInventario= new ArrayList<Venta>();     
     ClasePrincipal pricipal = new ClasePrincipal();
     Cliente cl = new Cliente();
     Venta ven= new Venta();
-    vendedor vendedor= new vendedor();
+    Vendedor vendedor= new Vendedor();
     Scanner scanner = new Scanner(System.in);
     
     
@@ -44,17 +45,16 @@ public class InventarioConsesionario{
         System.out.println ("3. ver mas Barato");
         System.out.println ("4. vender");
         System.out.println ("5. Regresar menu");
-        String variableControl = scanner.nextLine();
-            int variableSeleccion=Integer.parseInt(variableControl);            
-            if(variableSeleccion==1){
+        int variableControl = scanner.nextInt();         
+            if(variableControl==1){
                 impresionUnificacion();
-            }else if(variableSeleccion==2){
+            }else if(variableControl==2){
                 masCaro();
-            }else if(variableSeleccion==3){
+            }else if(variableControl==3){
                     masBarato();
-            }else if(variableSeleccion==4){
+            }else if(variableControl==4){
                    vender();
-            }else if(variableSeleccion==5){
+            }else if(variableControl==5){
                 ClasePrincipal cl = new ClasePrincipal();
                 cl.menu();
             }  
@@ -106,14 +106,14 @@ public class InventarioConsesionario{
             +"--su precio es:"+menor);
         unificar();
     }
-    
- 
+   
     /**
      * En este metodo es donde se realiza la operacion de venta validando por su placa
      */
     public void vender(){
+        ven = new Venta();
         System.out.println("Ingrese la placa a vender:");
-        String placaVehiculo = scanner.nextLine();    
+        String placaVehiculo = scanner.next();    
         for(CarrosPrincipal pc:listaInventario){
             if(pc.getPlaca().equals(placaVehiculo)){
                 System.out.println("Seguro de que sea Vender el vehiculo: "+""+pc.getPlaca()+"\nConfrime la compra (s/n)");
@@ -130,12 +130,113 @@ public class InventarioConsesionario{
                     cl.setCedulaCliente(ced);
                     ven.Lcliente.add(cl);
                     vendorVehiculo();
-                } 
-
+                }else if(caracter.equals("n")){
+                    unificar();
+                }
             }
-        }     
-        
+        }  
     }
+    
+    /**
+     * este metodo se encarga de hacer toda la parte de la comision
+     */
+    public void vendorVehiculo(){
+        System.out.println("ingrese el Nombre  del vendedor: ");
+        String codigo= scanner.next();   
+        System.out.println("ingrese el Codigo  de la venta: ");
+        String codigoEntero= scanner.next(); 
+        float valorComision=(float) 0.05;
+        int contador=0;
+        for(Vendedor vende : LvendedorInventario){
+            if(vende.getNombreVendedor().equals(codigo)){
+               for(CarrosPrincipal cr : listaInventario){
+                    if(contador==0){
+                        int indexVendedor=buscarVendedor(codigo);
+                        float comision = cr.getPrecio();
+                        comision=comision*valorComision;
+                        LvendedorInventario.get(indexVendedor).setComision(comision);
+                        ven.Lvendedor.add(LvendedorInventario.get(indexVendedor));
+                        ven.setCodigoVenta(codigoEntero);
+                        LventaInventario.add(ven);
+                    }
+                    contador+=contador+1;
+            }
+          }  
+        }
+        System.out.println("Desea agregar mas Ventas(s/n): ");
+        String ventas= scanner.next();
+        if(ventas.equals("s")){
+            seguirVentas(codigoEntero,codigo,valorComision);
+        }else if(ventas.equals("n")){
+            unificar();
+        }     
+    }
+    
+    /**
+     * Implementa, agregar un nueva venta, de los vehiculos para un mismo usuario
+     * @param codigo
+     * @param vendedor
+     * @param valorComision 
+     */
+    public void seguirVentas(String codigo,String vendedor,float valorComision){
+        int valorIndex = buscarIndexVenta(codigo);
+        System.out.println("Ingrese la placa a vender:");
+        String placaVehiculo = scanner.next(); 
+         for(CarrosPrincipal pc:listaInventario){
+            if(pc.getPlaca().equals(placaVehiculo)){
+                 System.out.println("Seguro de que sea Vender el vehiculo: "+""+pc.getPlaca()+"\nConfrime la compra (s/n)");
+                    String caracter = scanner.next();
+                    if(caracter.equals("s")){
+                        int indexLista = buscarIndex(placaVehiculo);
+                        LventaInventario.get(valorIndex).Lventa.add(listaInventario.get(indexLista));
+                        int indexVendedor=buscarVendedorLVenta(vendedor);
+                        float comision = pc.getPrecio();
+                        float val = ven.Lvendedor.get(indexVendedor).getComision();
+                        comision=(comision*valorComision)+val;
+                        LventaInventario.get(valorIndex).Lvendedor.get(indexVendedor).setComision(comision);
+                        seguirVentas(codigo, vendedor, valorComision);
+                    }else if(caracter.equals("n")){
+                        unificar();
+                    }
+            }
+         }
+         
+    }
+    
+    /**
+     * Metodo para hacer que el programa quede cilcico
+     * @param codigo
+     * @param vendedor
+     * @param valorComision 
+     */
+    public void confirmarSeguir(String codigo,String vendedor,float valorComision){
+        System.out.println("Desea agregar mas Ventas(s/n): ");
+        String ventas= scanner.next();
+        if(ventas.equals("s")){
+        seguirVentas( codigo, vendedor, valorComision);
+        }else if(ventas.equals("n")){
+            unificar();
+        }    
+    
+    }
+    
+    /**
+     * Busca, el index de la venta que esta guardado en la lista de ventas
+     * @param r
+     * @return 
+     */
+     public int buscarIndexVenta(String r){
+    int index = -1;
+    int bound = LventaInventario.size();
+    for (int userInd = 0; userInd < bound; userInd++) {
+        if (LventaInventario.get(userInd).getCodigoVenta().equals(r)) {
+            index = userInd;
+            break;
+        }
+    }
+    return index;
+}
+    
     
     /**
      * Este metodo recibe el estring de la placa del vehiculo para realizar la busqueda de su pocision de la lista 
@@ -156,38 +257,39 @@ public class InventarioConsesionario{
 }
  
     /**
-     * Recibe el parametro del nombre del vendedor,y retorna la pocison donde se encuentra el vendedor
+     * Recibe el parametro del nombre del Vendedor,y retorna la pocison donde se encuentra el Vendedor
      * @param r
      * @return index
      */
     public int buscarVendedor(String r){
     int index = -1;
-    int bound = Lvendedor.size();
+    int bound = LvendedorInventario.size();
     for (int userInd = 0; userInd < bound; userInd++) {
-        if (Lvendedor.get(userInd).getNombreVendedor().equals(r)) {
+        if (LvendedorInventario.get(userInd).getNombreVendedor().equals(r)) {
             index = userInd;
             break;
         }
     }
     return index;
 }
+    
     /**
-     * este metodo se encarga de hacer toda la parte de la comision
+     * Retorna el index del Vendedor en la lista de ventas 
+     * @param r
+     * @return 
      */
-    public void vendorVehiculo(){
-        System.out.println("ingrese el Nombre  del vendedor: ");
-        String codigo= scanner.next();   
-        float valorComision=(float) 0.05;
-        for(vendedor vende : Lvendedor){
-            if(vende.getNombreVendedor().equals(codigo)){
-               for(CarrosPrincipal cr : ven.Lventa){
-                    int indexVendedor=buscarVendedor(codigo);
-                    float comision = cr.getPrecio();
-                    comision=comision*valorComision;
-                    Lvendedor.get(indexVendedor).setComision(comision);
-                    ven.Lvendedor.addAll(Lvendedor);
-            }
-          }  
+    public int buscarVendedorLVenta(String r){
+    int index = -1;
+    int bound = LventaInventario.size();
+    for (int userInd = 0; userInd < bound; userInd++) {
+        if (LventaInventario.get(userInd).Lvendedor.get(userInd).getNombreVendedor().equals(r)) {
+            index = userInd;
+            break;
         }
     }
+    return index;
 }
+    
+}//clase Inventario
+
+

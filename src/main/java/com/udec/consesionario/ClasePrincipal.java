@@ -30,7 +30,7 @@ public class ClasePrincipal {
         CarrosEstandar ce;
         CarrosMaquinaria cm;
         CarrosPersonalizado cp;
-        vendedor ven;
+        Vendedor ven;
         Venta venta = new Venta();
         
         int contador=0;
@@ -53,19 +53,19 @@ public class ClasePrincipal {
      */
     public void autosPordefecto(){
         
-        ven=new vendedor();
+        ven=new Vendedor();
         ven.setCodigoVendedor(1);
         ven.setNombreVendedor("arturo");
         ven.setComision(0);
         listaVendedores.add(ven);
 
-        ven=new vendedor();
+        ven=new Vendedor();
         ven.setCodigoVendedor(2);
         ven.setNombreVendedor("julian");
         ven.setComision(0);
         listaVendedores.add(ven);
 
-        ven=new vendedor();
+        ven=new Vendedor();
         ven.setCodigoVendedor(3);
         ven.setNombreVendedor("manuel");
         ven.setComision(0);
@@ -173,7 +173,7 @@ public class ClasePrincipal {
                     inventarioC.listaInventario.addAll(listaCarrosEstandar);
                     inventarioC.listaInventario.addAll(listaCarrosMaquinaria);
                     inventarioC.listaInventario.addAll(listaCarrosPersonalizado);
-                    inventarioC.Lvendedor.addAll(listaVendedores);
+                    inventarioC.LvendedorInventario.addAll(listaVendedores);
                     inventarioC.unificar();
                 }else{
                     System.out.println ("no hay datos de vehiculos inserve uno valido");
